@@ -38,9 +38,9 @@
                       <div class="col-6 menubar" id="submenu">
                         
                         <ul class="submenu-items">
-                          <li><a href="positives.html">Positives</a></li>
-                          <li><a href="negatives.html">Negatives</a></li>
-                          <li><a href="fyi.html">FYI</a></li>
+                          <a href="positives.html"><li>Positives</li></a>
+                          <a href="negatives.html"><li>Negatives</li></a>
+                          <a href="fyi.html"><li>FYIs</li></a>
                         </ul>
                       </div>
                     
@@ -53,8 +53,10 @@
         <div class="col-12">
             
             <div class="form-group">
+              <!-- toto skontroluj ci funguje -->
+              <form method="POST"> 
               <label for="">What happened? Tell me! WTF></label>
-              <textarea class="form-control" name="content" id="content" rows="5" required></textarea>
+              <textarea class="form-control" name="content" id="content" rows="5" ></textarea>
               
               <div class="container">
               <div class="row">
@@ -69,6 +71,7 @@
               <input value="submit" type="submit" disabled="disabled" class="formBtn" onclick="post();">
 
               <div id="ans"></div>
+              </form>
             </div>
         
 

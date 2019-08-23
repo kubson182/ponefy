@@ -150,9 +150,8 @@ background-color: yellow;
  }
 
  .submenu-items li{
-   margin-bottom: 10px;
    border-bottom: 1px gray solid;
-   padding: 0px 10px 10px;
+   padding: 20px 10px;
  }
 
 .actual {

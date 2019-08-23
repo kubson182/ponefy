@@ -47,12 +47,15 @@ function loadfyi(){
 //postovanie cez submit.php
 
 function post(){
+
+
+  
     var mark = document.getElementById("mark").value; 
     var content = document.getElementById("content").value;
 
     // console.log(mark);
     // console.log(content);
-
+    if(content != ""){
     var formdata = new FormData();
     formdata.append("mark", mark);
     formdata.append("content", content);
@@ -63,6 +66,10 @@ ajax.addEventListener("load", completeHandlerrrr, false);
 
 ajax.open("POST", "http://kubsons-app.byethost8.com/submit.php");
 ajax.send(formdata);
+}else{
+    alert("Please write down comment")
+}
+
 }
 
 function completeHandlerrrr(event){
@@ -100,6 +107,15 @@ $(document).ready(function(){
         $("#submenu").toggleClass("displayed");
         
     });
+    
+    
+    $(".nav-toggler").focusout(function(){
+        setTimeout(function(){
+        $(".menuicon").toggleClass("change");
+        $("#submenu").toggleClass("displayed");
+        }, 100);
+    });
+
 
 // selecting value for mark, highlighting and enabling submit
 $(".selection").click(function(){
@@ -108,6 +124,7 @@ $(".selection").click(function(){
     // console.log($(this).attr('id'));
     $("#mark").attr("value", $(this).attr("id"))
     $(".formBtn").removeAttr("disabled", "disabled");
+    
 });
 
 
