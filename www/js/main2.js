@@ -73,7 +73,7 @@ function load() {
         var i = 1;
         document.getElementById('komenty').innerHTML = "";
         while (i < pocet) {
-            $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + comments[i][1] + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
+            $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + comments[i][1] + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
             i++;
         }
 
@@ -146,6 +146,7 @@ function load() {
         }
         $(".editing").removeClass("editing");
         $("#" + id + ".comment").addClass("editing");
+        window.scrollTo(0, 0);
 
     }); // end of click on editbtn
 
