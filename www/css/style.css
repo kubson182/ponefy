@@ -151,15 +151,16 @@ a:visited {
   cursor: pointer;
 }
 
-#forma > .formBtn {
+#forma>.formBtn {
   width: 49%;
 }
 
-#updateforma > .formBtn {
+#updateforma>.formBtn {
   width: 49%;
   display: inline-block;
 }
-#cancelforma > .formBtn {
+
+#cancelforma>.formBtn {
   width: 49%;
   float: right;
 }
@@ -287,14 +288,14 @@ a:visited {
   opacity: 0;
   transition: opacity, 1s;
   position: relative;
-  top: 10px; 
+  top: 10px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: rgba(255, 251, 0, 0.349);
   color: rgb(0, 0, 0);
   padding: 15px 25px 10px 25px;
-   float: right;
-   cursor: pointer;
+  float: right;
+  cursor: pointer;
 
 }
 
@@ -308,7 +309,7 @@ a:visited {
 }
 
 .hide {
-  opacity:0;
+  opacity: 0;
   transition: opacity, 1s;
 }
 
@@ -318,10 +319,12 @@ a:visited {
   font-weight: bold;
   color: green;
 }
+
 .negative {
   font-weight: bold;
   color: red;
 }
+
 .FYI {
   font-weight: bold;
   color: blue;
