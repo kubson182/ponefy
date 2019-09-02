@@ -2,15 +2,10 @@ if (typeof (Storage) !== "undefined") {
     // Code for localStorage/sessionStorage.
     //console.log("local storage is supproted");
 
-
     var d = new Date();
     var month = d.getMonth() + 1;
     var day = d.getDate();
     var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + d.getFullYear();
-
-
-
-
 
     function post() {
         var mark = $("#mark").attr("value");
@@ -18,7 +13,6 @@ if (typeof (Storage) !== "undefined") {
         var comments = [
             ["mark", "date", "content"]
         ]
-
 
         if (content.length < 1) {
             document.getElementById("error").innerHTML = "<span class='errormsg'>MUSIS ZADAT TEXT</span>";
@@ -64,14 +58,10 @@ if (typeof (Storage) !== "undefined") {
 
     } //koniec post()
 
-
 } else {
     console.log("local storage not supproted");
     // Sorry! No Web Storage support..
 }
-
-
-
 
 function load() {
     var comments = JSON.parse(localStorage.getItem("comments"));
@@ -79,21 +69,13 @@ function load() {
         console.log("ziadne komenty");
 
     } else {
-
-
-
         var pocet = comments.length;
         var i = 1;
         document.getElementById('komenty').innerHTML = "";
         while (i < pocet) {
             $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + comments[i][1] + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
-
-
-
             i++;
         }
-
-
 
         //swipe events for comments
         $(".comment").on("swiperight", function () {
@@ -109,15 +91,11 @@ function load() {
                 $(".active").removeClass("active");
                 $("#updateforma").addClass("disabled");
                 $("#cancelforma").addClass("disabled");
-                $("#mark").attr("value","");
-
-
+                $("#mark").attr("value", "");
             } else {
                 $(this).addClass("todelete");
                 var id = $(this).attr("id");
                 $(".removebtn." + id).addClass("show");
-
-
             }
         });
 
@@ -140,49 +118,36 @@ function load() {
                 $(".editbtn." + id).addClass("show");
             }
         });
-
-
     }
 
-
-   
-
-
-    $(".editbtn").click(function() {
+    $(".editbtn").click(function () {
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
         var id = $(this).attr("hodnota");
-
         var comment = comments[id]; // vyberie aktualny comment zo vsetkych
         var mark = comment[0]; // aka je znacka commentu
         var content = comment[2]; // obsah commentu
 
         $("#content").val(content);
         $(".active").removeClass("active");
-        $("#"+mark).addClass("active");
-        $("#mark").attr("value",mark);
+        $("#" + mark).addClass("active");
+        $("#mark").attr("value", mark);
         $("#forma").addClass("disabled");
-        $("#updateforma").removeClass("disabled");  
-        $("#cancelforma").removeClass("disabled");      
+        $("#updateforma").removeClass("disabled");
+        $("#cancelforma").removeClass("disabled");
         var i = comments.length - 1;
         console.log(id);
-        while (i>0){
-            if(i != id){
-                $("#"+i).removeClass("toedit");
+        while (i > 0) {
+            if (i != id) {
+                $("#" + i).removeClass("toedit");
                 // console.log("nastava zmena ked i="+i)
             }
             // console.log(comments[i]);
             i--;
         }
         $(".editing").removeClass("editing");
-        $("#"+id+".comment").addClass("editing");
-
-        
-        
-        
-
+        $("#" + id + ".comment").addClass("editing");
 
     }); // end of click on editbtn
-
 
     $(".removebtn").click(function () {
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
@@ -192,23 +157,19 @@ function load() {
         console.log(comments)
         localStorage.setItem("comments", JSON.stringify(comments));
 
-
-
         $("." + id).css("opacity", "0");
         setTimeout(function () {
             $("." + id).hide();
         }, 500);
 
-        setTimeout(function(){
+        setTimeout(function () {
             load();
-        },800);
+        }, 800);
 
     });
 
 
 } //end of load()
-
-
 
 function update() {
     var id = $(".editing").attr("id");
@@ -216,20 +177,18 @@ function update() {
     var mark = $("#mark").attr("value");
     var content = $("#content").val();
     var origindate = comments[id][1];
-    var comment = [mark,origindate,content];
-    comments.splice(id,1,comment);
-    localStorage.setItem("comments", JSON.stringify(comments));    
-    setTimeout(function(){
+    var comment = [mark, origindate, content];
+    comments.splice(id, 1, comment);
+    localStorage.setItem("comments", JSON.stringify(comments));
+    setTimeout(function () {
         load();
         $("#updateforma").addClass("disabled");
-    $("#cancelforma").addClass("disabled");
-    $("#forma").addClass("disabled");
-    $("#content").val("");
-    $(".active").removeClass("active");
-    $("#mark").attr("value","");
-    },300);
-
-    
+        $("#cancelforma").addClass("disabled");
+        $("#forma").addClass("disabled");
+        $("#content").val("");
+        $(".active").removeClass("active");
+        $("#mark").attr("value", "");
+    }, 300);
 
 } //end of update()
 
@@ -237,20 +196,19 @@ function cancel() {
     $("#content").val("");
     $(".active").removeClass("active");
     $(".show").removeClass("show");
-    $("#mark").attr("value","");
+    $("#mark").attr("value", "");
     $(".toedit").removeClass("toedit");
     $(".editing").removeClass("editing");
     $("#updateforma").addClass("disabled");
     $("#cancelforma").addClass("disabled");
     $("#forma").addClass("disabled");
-    
+
 } //end of cancel
 
 
 function filterP() {
     $(".n").fadeOut(600);
     $(".f").fadeOut(600);
-
     $(".p").fadeIn(900);
 }
 
@@ -272,15 +230,6 @@ function filterOff() {
     $(".f").fadeIn(900);
 }
 
-
-
-
-
-
-
-
-
-
 $(document).ready(function () {
     //nacitat komenty
     load();
@@ -300,10 +249,6 @@ $(document).ready(function () {
         }, 100);
     });
 
-
-
-
-
     // selecting value for mark, highlighting and enabling submit
     $(".selection").click(function () {
         var content = $("#content").val();
@@ -311,18 +256,13 @@ $(document).ready(function () {
         $(this).addClass("active");
         // console.log($(this).attr('id'));
         $("#mark").attr("value", $(this).attr("id"));
-        if($(".editing")[0]){
+        if ($(".editing")[0]) {
             $("#cancelforma").removeClass("disabled");
-        }else{
-        $("#forma").removeClass("disabled");
-        $("#cancelforma").removeClass("disabled");
+        } else {
+            $("#forma").removeClass("disabled");
+            $("#cancelforma").removeClass("disabled");
         }
     });
-
-   
-
-
-
 
 
 });
