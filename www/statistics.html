@@ -11,8 +11,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+
   <script src="js/menu.js"></script>
-  <script src="js/main2.js"></script>
+  <script src="js/statistics.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 
@@ -47,20 +48,20 @@
 
           <ul class="submenu-items">
             <a onclick="filterOff();">
-              <li>ALL</li>
+              <li>Overview</li>
             </a>
-            <a onclick="filterP();">
-              <li>Positives</li>
+            <!-- <a onclick="filterP();">
+              <li>This week</li>
             </a>
             <a onclick="filterN();">
-              <li>Negatives</li>
+              <li>This Month</li>
             </a>
             <a onclick="filterF();">
-              <li>FYIs</li>
-            </a>
-            <a onclick="location.href='statistics.html';">
-              <li>Statistics</li>
-            </a>
+              <li>Date range</li>
+            </a> -->
+            <a onclick="location.href='index.html';">
+                <li>HOME</li>
+              </a>
           </ul>
         </div>
 
@@ -72,42 +73,12 @@
     <div class="row">
       <div class="col-12">
 
-        <div class="form-group">
-          <!-- toto skontroluj ci funguje -->
-          <form method="POST">
-            <label for="">What happened? Tell me! WTF></label>
-            <textarea class="form-control" name="content" id="content"></textarea>
-
-            <div class="container">
-              <div class="row">
-
-
-                <div class="selection col-4" id="p">positive</div>
-                <div class="selection col-4" id="n">negative</div>
-                <div class="selection col-4" id="f">FYI</div>
-                <input type="text" hidden name="mark" id="mark">
-              </div>
-            </div>
-
-            <div onclick="post();" class="formBtn disabled" id="forma">
-              <span>Submit</span>
-            </div>
-            <div onclick="update();" class="disabled formBtn" id="updateforma">
-              <span>Update</span>
-            </div>
-            <div onclick="cancel();" class="disabled formBtn" id="cancelforma">
-              <span>Cancel</span>
-            </div>
-
-            <div id="error"></div>
-
-          </form>
+        <div class="statistics-overview"></div>
+        <div class="statistics-dates"></div>
 
 
         </div>
-        <div id="komenty">
-
-        </div>
+        
 
 
 
