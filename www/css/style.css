@@ -311,3 +311,18 @@ a:visited {
   opacity:0;
   transition: opacity, 1s;
 }
+
+/* STATISTICS */
+
+.positive {
+  font-weight: bold;
+  color: green;
+}
+.negative {
+  font-weight: bold;
+  color: red;
+}
+.FYI {
+  font-weight: bold;
+  color: blue;
+}
