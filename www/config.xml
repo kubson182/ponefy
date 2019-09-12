@@ -29,6 +29,7 @@
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" /> -->
+    <plugin name="cordova-plugin-file" spec="~4.3.3" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <access origin="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <access origin="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
