@@ -1,5 +1,129 @@
 <!DOCTYPE html>
-<body style="margin: 0; height: 1000px;" >
-<iframe src="http://kubsons-app.byethost8.com/index2.html" height="100%" width="100%" style="border: none;"></iframe>
+<html lang="en">
+
+<head>
+  <title>Testing app</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/main2.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <nav>
+    <div class="container-fluid menubar">
+
+      <div class="row">
+
+        <div class="col-12">
+          <span class="title">PONEFY</span>
+          <button class="nav-toggler">
+            <div class="menuicon">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+          </button>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-6 menubar" id="submenu">
+
+          <ul class="submenu-items">
+            <a onclick="filterOff();">
+              <li>ALL</li>
+            </a>
+            <a onclick="filterP();">
+              <li>Positives</li>
+            </a>
+            <a onclick="filterN();">
+              <li>Negatives</li>
+            </a>
+            <a onclick="filterF();">
+              <li>FYIs</li>
+            </a>
+            <a onclick="location.href='statistics.html';">
+              <li>Statistics</li>
+            </a>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" id="main">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="form-group">
+          <!-- toto skontroluj ci funguje -->
+          <form method="POST">
+
+            <label>What happened?</label>
+            <textarea class="form-control" name="content" id="content"></textarea>
+
+            <div class="container">
+              <div class="row">
+
+
+                <div class="selection col-4" id="p">positive</div>
+                <div class="selection col-4" id="n">negative</div>
+                <div class="selection col-4" id="f">FYI</div>
+                <input type="text" hidden name="mark" id="mark">
+              </div>
+            </div>
+
+            <div onclick="post();" class="formBtn disabled" id="forma">
+              <span>Submit</span>
+            </div>
+            <div onclick="update();" class="disabled formBtn" id="updateforma">
+              <span>Update</span>
+            </div>
+            <div onclick="cancel();" class="disabled formBtn" id="cancelforma">
+              <span>Cancel</span>
+            </div>
+
+            <div id="error"></div>
+
+          </form>
+
+
+        </div>
+        <div id="komenty">
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
 </body>
+
 </html>
