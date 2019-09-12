@@ -1,0 +1,1 @@
+{"devDependencies":{"cordova-sqlite-storage":"~2.1.2","cordova-plugin-whitelist":"~1.2.1"},"cordova":{"plugins":{"cordova-sqlite-storage":{},"cordova-plugin-whitelist":{}}}}
