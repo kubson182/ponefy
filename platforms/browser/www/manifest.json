@@ -1,11 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "P-N-F",
-  "short_name": "P-N-F",
-  "version": "com.codesundar.ponefy",
-  "description": "App to track positive, negative and FYI events.",
-  "author": "Jakub Krchlík",
+  "name": "Empty",
+  "short_name": "Empty",
+  "version": "com.kubson.empty",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "author": "Apache Cordova Team",
   "icons": [],
   "start_url": "index.html"
 }

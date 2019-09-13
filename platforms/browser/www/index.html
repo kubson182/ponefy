@@ -1,129 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
 
-<head>
-  <title>Testing app</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+    http://www.apache.org/licenses/LICENSE-2.0
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/main2.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <nav>
-    <div class="container-fluid menubar">
-
-      <div class="row">
-
-        <div class="col-12">
-          <span class="title">PONEFY</span>
-          <button class="nav-toggler">
-            <div class="menuicon">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
             </div>
-          </button>
-
-
-
         </div>
-      </div>
-    </div>
-
-    <div class="container-fluid ">
-      <div class="row">
-        <div class="col-6 menubar" id="submenu">
-
-          <ul class="submenu-items">
-            <a onclick="filterOff();">
-              <li>ALL</li>
-            </a>
-            <a onclick="filterP();">
-              <li>Positives</li>
-            </a>
-            <a onclick="filterN();">
-              <li>Negatives</li>
-            </a>
-            <a onclick="filterF();">
-              <li>FYIs</li>
-            </a>
-            <a onclick="location.href='statistics.html';">
-              <li>Statistics</li>
-            </a>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </nav>
-
-  <div class="container" id="main">
-    <div class="row">
-      <div class="col-12">
-
-        <div class="form-group">
-          <!-- toto skontroluj ci funguje -->
-          <form method="POST">
-
-            <label>What happened?</label>
-            <textarea class="form-control" name="content" id="content"></textarea>
-
-            <div class="container">
-              <div class="row">
-
-
-                <div class="selection col-4" id="p">positive</div>
-                <div class="selection col-4" id="n">negative</div>
-                <div class="selection col-4" id="f">FYI</div>
-                <input type="text" hidden name="mark" id="mark">
-              </div>
-            </div>
-
-            <div onclick="post();" class="formBtn disabled" id="forma">
-              <span>Submit</span>
-            </div>
-            <div onclick="update();" class="disabled formBtn" id="updateforma">
-              <span>Update</span>
-            </div>
-            <div onclick="cancel();" class="disabled formBtn" id="cancelforma">
-              <span>Cancel</span>
-            </div>
-
-            <div id="error"></div>
-
-          </form>
-
-
-        </div>
-        <div id="komenty">
-
-        </div>
-
-
-
-      </div>
-    </div>
-  </div>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
-
-</body>
-
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
 </html>

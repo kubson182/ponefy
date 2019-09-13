@@ -1,6 +1,6 @@
 {
-  "name": "SQLiteExample",
-  "short_name": "SQLiteExample",
+  "name": "Empty",
+  "short_name": "Empty",
   "description": "Description of your app from template",
   "start_url": "index.html",
   "scope": "index.html",
