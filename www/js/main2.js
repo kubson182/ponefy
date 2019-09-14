@@ -3,9 +3,7 @@ if (typeof (Storage) !== "undefined") {
     //console.log("local storage is supproted");
 
     var d = new Date();
-    var month = d.getMonth() + 1;
-    var day = d.getDate();
-    var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + d.getFullYear();
+    
 
     function post() {
         var mark = $("#mark").attr("value");
@@ -25,7 +23,7 @@ if (typeof (Storage) !== "undefined") {
                 // console.log("bolo null");
                 // console.log(parseInt(localStorage.id)); //vypise 1
                 var id = parseInt(localStorage.id); //id = 1 ciselne
-                var comment = [mark, DateOutput, content];
+                var comment = [mark, new Date(), content];
                 comments.push(comment); //do pola pridam aktualny comment
                 localStorage.setItem("comments", JSON.stringify(comments));
 
@@ -35,7 +33,7 @@ if (typeof (Storage) !== "undefined") {
 
                 var id = parseInt(localStorage.id); //do id priradi cislo z localstorage.id
 
-                var comment = [mark, DateOutput, content];
+                var comment = [mark, new Date(), content];
 
                 var comments = JSON.parse(localStorage.getItem("comments"));
                 comments.push(comment);
@@ -64,6 +62,7 @@ if (typeof (Storage) !== "undefined") {
 }
 
 function load() {
+    
     var comments = JSON.parse(localStorage.getItem("comments"));
     if (comments === null) {
         console.log("ziadne komenty");
@@ -73,7 +72,15 @@ function load() {
         var i = 1;
         document.getElementById('komenty').innerHTML = "";
         while (i < pocet) {
-            $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + comments[i][1] + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
+            var ddd = comments[i][1];
+            // console.log(ddd);
+            // var komdate = ddd.substring(0,10);
+            ddd = new Date(ddd);
+            var month = ddd.getMonth() + 1;
+            var day = ddd.getDate();
+            var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + d.getFullYear();
+            
+            $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + DateOutput + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
             i++;
         }
 
