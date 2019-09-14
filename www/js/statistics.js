@@ -35,9 +35,6 @@ $(document).ready(function () {
     // console.log(ff);
 
 
-    // console.log("pocet pozitivnych komentarov je: " + p);
-    // console.log("pocet negativnych komentarov je: " + n);
-    // console.log("pocet FYI komentarov je: " + f);
 $(".statistics-overview").append("<p>There is totally: "+ pocet +" comments</p>");
 $(".statistics-overview").append("<p><span class='positive'>Positive:</span>  "+ p +" comments</p>");
 $(".statistics-overview").append("<p><span class='negative'>Negative:</span>  "+ n +" comments</p>");
@@ -47,6 +44,44 @@ $(".statistics-overview").append("<p><span class='FYI'>FYIs:</span>  "+ f +" com
 $(".statistics-overview").append('<div class="progress" style="height:30px"><div class="progress-bar bg-success" style="width:' + pp + '%">'+ pp +'%</div><div class="progress-bar bg-danger" style="width:'+ nn +'%">'+ nn +'%</div><div class="progress-bar" style="width:'+ ff +'%">'+ ff +'%</div></div>');
 // $(".statistics-dates").append('');
 
+
+$(function() {
+    $('input[name="daterange"]').daterangepicker({
+      opens: 'left'
+    }, function(start, end, label) {
+      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    // console.log(start._d);
+    var i = 1;
+    var p = 0;
+    var n = 0;
+    var f = 0;
+    while(i<comments.length){
+        var ddd = comments[i][1];
+            // console.log(ddd);
+            // var komdate = ddd.substring(0,10);
+            ddd = new Date(ddd);
+        if(start._d <= ddd && end._d >= ddd){
+            // console.log("start date je skor alebo rovnako a end date je neskor alebo rovnako");
+            // console.log(start._d);
+            // console.log(ddd);
+
+            if(comments[i][0]=="p"){
+                p++;
+            }else if(comments[i][0]=="n"){
+                n++;
+            }else{
+                f++;
+            }
+        }else{
+            // console.log("start date je neskor alebo end date je skor");
+
+        }
+        i++;
+    }
+    $("#daterangestats").html("<p>v danom obdobi bolo:<br/>" + p + " pozitivnych komentov<br/>" + n + " negativnych komentiv<br/>" + f + " FYI komentov</p>");
+    // console.log("v danom obdobi bolo: " + p + " pozitivnych komentov, " + n + " negativnych komentiv a " + f + " FYI komentov");
+    });
+  });
 
 
 document.addEventListener('deviceready', function() {
