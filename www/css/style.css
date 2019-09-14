@@ -329,3 +329,9 @@ a:visited {
   font-weight: bold;
   color: blue;
 }
+
+
+
+#daterange {
+  width: 100%;
+}
