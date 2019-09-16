@@ -13,8 +13,8 @@ if (typeof (Storage) !== "undefined") {
         ]
 
         if (content.length < 1) {
-            document.getElementById("error").innerHTML = "<span class='errormsg'>MUSIS ZADAT TEXT</span>";
-
+            // document.getElementById("error").innerHTML = "<span class='errormsg'>MUSIS ZADAT TEXT</span>";
+            alert("you have to enter at least 1 character")
             $('.errormsg').fadeOut(1500);
         } else {
 
