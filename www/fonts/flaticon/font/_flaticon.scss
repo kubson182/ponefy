@@ -1,12 +1,13 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 22/05/2018 03:49
+    Creation date: 16/09/2019 08:19
     */
 
     @font-face {
   font-family: "Flaticon";
   src: url("./Flaticon.eot");
   src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
        url("./Flaticon.woff") format("woff"),
        url("./Flaticon.ttf") format("truetype"),
        url("./Flaticon.svg#Flaticon") format("svg");
@@ -36,22 +37,20 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-bank:before { content: "\f100"; }
-.flaticon-dart:before { content: "\f101"; }
-.flaticon-career:before { content: "\f102"; }
-.flaticon-lightbulb:before { content: "\f103"; }
-.flaticon-pie-chart:before { content: "\f104"; }
-.flaticon-trophy:before { content: "\f105"; }
-.flaticon-money:before { content: "\f106"; }
-.flaticon-handshake:before { content: "\f107"; }
-.flaticon-presentation:before { content: "\f108"; }
+    .flaticon-plus:before { content: "\f100"; }
+.flaticon-minus:before { content: "\f101"; }
+.flaticon-question-mark:before { content: "\f102"; }
+.flaticon-home:before { content: "\f103"; }
+.flaticon-line-chart:before { content: "\f104"; }
+.flaticon-repairing-service:before { content: "\f105"; }
+.flaticon-settings-gears:before { content: "\f106"; }
+.flaticon-two-settings-cogwheels:before { content: "\f107"; }
     
-    $font-Flaticon-bank: "\f100";
-    $font-Flaticon-dart: "\f101";
-    $font-Flaticon-career: "\f102";
-    $font-Flaticon-lightbulb: "\f103";
-    $font-Flaticon-pie-chart: "\f104";
-    $font-Flaticon-trophy: "\f105";
-    $font-Flaticon-money: "\f106";
-    $font-Flaticon-handshake: "\f107";
-    $font-Flaticon-presentation: "\f108";
+    $font-Flaticon-plus: "\f100";
+    $font-Flaticon-minus: "\f101";
+    $font-Flaticon-question-mark: "\f102";
+    $font-Flaticon-home: "\f103";
+    $font-Flaticon-line-chart: "\f104";
+    $font-Flaticon-repairing-service: "\f105";
+    $font-Flaticon-settings-gears: "\f106";
+    $font-Flaticon-two-settings-cogwheels: "\f107";
