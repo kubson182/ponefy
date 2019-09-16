@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 16/09/2019 08:19
+  	Creation date: 16/09/2019 11:03
   	*/
 
 @font-face {
@@ -38,3 +38,5 @@ margin-left: 20px;
 .flaticon-repairing-service:before { content: "\f105"; }
 .flaticon-settings-gears:before { content: "\f106"; }
 .flaticon-two-settings-cogwheels:before { content: "\f107"; }
+.flaticon-filter-tool-black-shape:before { content: "\f108"; }
+.flaticon-right-arrow:before { content: "\f109"; }

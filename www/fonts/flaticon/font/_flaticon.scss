@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 16/09/2019 08:19
+    Creation date: 16/09/2019 11:03
     */
 
     @font-face {
@@ -45,6 +45,8 @@
 .flaticon-repairing-service:before { content: "\f105"; }
 .flaticon-settings-gears:before { content: "\f106"; }
 .flaticon-two-settings-cogwheels:before { content: "\f107"; }
+.flaticon-filter-tool-black-shape:before { content: "\f108"; }
+.flaticon-right-arrow:before { content: "\f109"; }
     
     $font-Flaticon-plus: "\f100";
     $font-Flaticon-minus: "\f101";
@@ -54,3 +56,5 @@
     $font-Flaticon-repairing-service: "\f105";
     $font-Flaticon-settings-gears: "\f106";
     $font-Flaticon-two-settings-cogwheels: "\f107";
+    $font-Flaticon-filter-tool-black-shape: "\f108";
+    $font-Flaticon-right-arrow: "\f109";
