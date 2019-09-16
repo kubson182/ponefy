@@ -3,7 +3,7 @@ if (typeof (Storage) !== "undefined") {
     //console.log("local storage is supproted");
 
     var d = new Date();
-    
+
 
     function post() {
         var mark = $("#mark").attr("value");
@@ -62,7 +62,7 @@ if (typeof (Storage) !== "undefined") {
 }
 
 function load() {
-    
+
     var comments = JSON.parse(localStorage.getItem("comments"));
     if (comments === null) {
         console.log("ziadne komenty");
@@ -79,7 +79,7 @@ function load() {
             var month = ddd.getMonth() + 1;
             var day = ddd.getDate();
             var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + d.getFullYear();
-            
+
             $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + DateOutput + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
             i++;
         }
