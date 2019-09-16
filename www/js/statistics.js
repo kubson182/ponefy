@@ -48,14 +48,10 @@ $(document).ready(function () {
     var nn = Math.round((100 / pocet) * n);
     var ff = Math.round((100 / pocet) * f);
 
-
-
     $(".statistics-overview").append("<p>There is totally: " + pocet + " comments</p>");
     $(".statistics-overview").append("<p><span class='positive'>Positive:</span>  " + p + " comments</p>");
     $(".statistics-overview").append("<p><span class='negative'>Negative:</span>  " + n + " comments</p>");
     $(".statistics-overview").append("<p><span class='FYI'>FYIs:</span>  " + f + " comments</p>");
-
-
     $(".statistics-overview").append('<div class="progress" style="height:30px"><div class="progress-bar bg-success" style="width:' + pp + '%">' + pp + '%</div><div class="progress-bar bg-danger" style="width:' + nn + '%">' + nn + '%</div><div class="progress-bar" style="width:' + ff + '%">' + ff + '%</div></div>');
 
 
@@ -108,18 +104,7 @@ $(document).ready(function () {
             $(".statistics-overview").append("<p><span class='FYI'>FYIs:</span>  " + f + " comments</p>");
             $(".statistics-overview").append('<div class="progress" style="height:30px"><div class="progress-bar bg-success" style="width:' + pp + '%">' + pp + '%</div><div class="progress-bar bg-danger" style="width:' + nn + '%">' + nn + '%</div><div class="progress-bar" style="width:' + ff + '%">' + ff + '%</div></div>');
 
-
         });
     });
-
-
-    document.addEventListener('deviceready', function () {
-        window.sqlitePlugin.echoTest(function () {
-            alert('ECHO test OK');
-        });
-    });
-
-
-
 
 })
