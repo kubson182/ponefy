@@ -9,6 +9,10 @@ nav {
   z-index: 2;
 }
 
+.ccontainer-fluid.menubar {
+  z-index: 900;
+}
+
 a,
 a:hover,
 a:visited {
@@ -32,8 +36,9 @@ a:visited {
   font-size: 24px;
   position: relative;
   top: 15px;
-  /* margin-left: 15px; */
-
+}
+.title a {
+  color: white !important;
 }
 
 .nav-toggler {
@@ -93,17 +98,22 @@ a:visited {
 #submenu {
   position: fixed;
   right: -100%;
-  transition: right 0.3s;
-  z-index: 1;
+  transition: right 0.4s;
+  z-index: -1;
   height: 1500px;
 }
 
 #submenu.displayed {
   position: absolute;
   right: 0;
-  transition: right 0.3s;
-  z-index: 1;
+  transition: right 0.4s;
+  z-index: -1;
   height: 1500px;
+}
+
+.icon::before{
+  margin-right: 5px;
+  margin-left: 0px !important;
 }
 
 #main {
@@ -186,14 +196,51 @@ a:visited {
 
 .submenu-items {
   list-style-type: none;
-  margin-top: 20px;
+  margin-top: 0px;
   padding-left: 0;
   cursor: pointer;
+  /* background-color: black; */
+}
+
+#menu-filters{
+  z-index: 100;
+}
+
+.submenu-filters{
+  list-style: none;
+  padding-left: 0px;
+  z-index: -1;
+  position: relative;
+  top: -207px;
+  /* visibility: hidden; */
+  transition: top 0.3s, z-index 0.1s;
+  
+  
+}
+
+.submenu-filters li {
+  padding-left: 30px !important;
+}
+
+#menu-statistics{
+  position: relative;
+  top: -207px;
+  transition: top 0.3s;
+}
+
+.opened {
+  top:0px !important;
+  transition: top 0.3s, z-index 0.6s;
+  visibility: visible;
+  z-index: 0;
+
+  
 }
 
 .submenu-items li {
   border-bottom: 1px gray solid;
-  padding: 20px 10px;
+  padding: 15px 10px;
+  background-color: black;
 }
 
 .actual {
@@ -335,4 +382,8 @@ a:visited {
 
 #daterange {
   width: 100%;
+}
+
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+  font-weight: normal !important;
 }

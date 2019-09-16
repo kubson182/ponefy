@@ -14,6 +14,7 @@
   <script src="js/menu.js"></script>
   <script src="js/main2.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 
 </head>
@@ -28,12 +29,12 @@
       <div class="row">
 
         <div class="col-12">
-          <span class="title">PONEFY</span>
+          <span class="title"><a onclick="location.href='index.html';">PONEFY</a></span>
           <button class="nav-toggler">
             <div class="menuicon">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
+              <div class="bar bar1"></div>
+              <div class="bar bar2"></div>
+              <div class="bar bar3"></div>
             </div>
           </button>
 
@@ -46,23 +47,32 @@
 
     <div class="container-fluid ">
       <div class="row">
-        <div class="col-6 menubar" id="submenu">
+        <div class="col-4 menubar" id="submenu">
 
           <ul class="submenu-items">
-            <a onclick="filterOff(ch);">
+            <a onclick="location.href='index.html';">
+                <li><span class="icon flaticon-home">Home</span></li>
+            </a>
+
+              <a id="menu-filters" class="notclose">
+                  <li class="notclose"><span class="icon flaticon-filter-tool-black-shape notclose">Filters</span></li>
+                </a>
+            <ul class="submenu-filters">
+            <a onclick="filterOff();">
               <li>ALL</li>
             </a>
             <a onclick="filterP();">
-              <li>Positives</li>
+              <li><span class="icon flaticon-plus">Positives</span></li>
             </a>
             <a onclick="filterN();">
-              <li>Negatives</li>
+              <li><span class="icon flaticon-minus">Negatives</span></li>
             </a>
             <a onclick="filterF();">
-              <li>FYIs</li>
+              <li><span class="icon flaticon-question-mark">FYIs</span></li>
             </a>
-            <a onclick="location.href='statistics.html';">
-              <li>statistics</li>
+          </ul>
+            <a id="menu-statistics" onclick="location.href='statistics.html';">
+              <li><span class="icon flaticon-line-chart">Statistics</span></li>
             </a>
           </ul>
         </div>
