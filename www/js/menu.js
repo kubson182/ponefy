@@ -25,6 +25,7 @@ $(document).ready(function () {
     
     //submenu for filters
     $("#menu-filters").click(function () {
+        $(".flaticon-right-arrow").toggleClass("rotated");
         $(".submenu-filters").toggleClass("opened");
         $("#menu-statistics").toggleClass("opened");
         $(".menuicon").addClass("change");

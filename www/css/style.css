@@ -232,9 +232,18 @@ a:visited {
   top:0px !important;
   transition: top 0.3s, z-index 0.6s;
   visibility: visible;
-  z-index: 0;
+  z-index: 0;  
+}
 
-  
+.flaticon-right-arrow::before {
+  display: inline-block;
+  transition: transform 0.5s;
+}
+
+.rotated::before {
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform 0.5s;
 }
 
 .submenu-items li {
