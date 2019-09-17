@@ -385,6 +385,38 @@ label {
 
 }
 
+.removebtn2 {
+  border: 1px solid black;
+  opacity: 0;
+  border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0.651);
+  display: inline;
+  transition: opacity, 0.3s;
+  color: white;
+  position: relative;
+  top: 10px;
+  padding: 15px 10px 10px 10px;
+  float: right;
+  cursor: pointer;
+
+  
+}
+
+.editbtn2 {
+  border: 1px solid black;
+  opacity: 0;
+  display: inline;
+  transition: opacity, 1s;
+  position: relative;
+  top: 30px;
+  border-radius: 5px;
+  background-color: rgba(255, 251, 0, 0.63);
+  color: rgb(0, 0, 0);
+  padding: 15px 25px 10px 25px;
+  cursor: pointer;
+
+}
+
 .editing {
   border: 2px solid rgb(209, 160, 0);
 }

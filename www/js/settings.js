@@ -29,6 +29,14 @@ $(document).ready(function () {
 // do nothing
             }
 
+            if(invert == 1){
+                $("#invertswitch").addClass("checked");
+                $("#invertswitcher").addClass("on");
+                inverton();
+            }else{
+// do nothing
+            }
+
 
             
            
@@ -104,6 +112,8 @@ function inverton(){
     localStorage.setItem("settings", JSON.stringify(settings));
     console.log("on");
     console.log("invert setting: " + invert +", darktheme: "+ darktheme);
+    // $("#mainjs").attr("src","js/main2.js");
+    document.body.appendChild(document.createElement('script')).src='js/main2.js';
 }
 function invertoff(){
     var settings = JSON.parse(localStorage.getItem("settings"));
@@ -114,4 +124,6 @@ function invertoff(){
     localStorage.setItem("settings", JSON.stringify(settings));
     console.log("off");
     console.log("invert setting: " + invert +", darktheme: "+ darktheme);
+    // $("#mainjs").attr("src","js/main.js");
+    document.body.appendChild(document.createElement('script')).src='js/main2.js';
 }

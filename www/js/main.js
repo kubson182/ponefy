@@ -80,7 +80,7 @@ function load() {
             var day = ddd.getDate();
             var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + d.getFullYear();
 
-            $("#komenty").prepend("<div hodnota='" + i + "' class='editbtn2 " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div hodnota='" + i + "' class='removebtn2 " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + DateOutput + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
+            $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + DateOutput + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
             i++;
         }
 
@@ -102,7 +102,7 @@ function load() {
             } else {
                 $(this).addClass("todelete");
                 var id = $(this).attr("id");
-                $(".editbtn2." + id).addClass("show");
+                $(".removebtn." + id).addClass("show");
             }
         });
 
@@ -122,12 +122,12 @@ function load() {
                 $(this).addClass("toedit");
                 var id = $(this).attr("id");
                 // console.log(id);
-                $(".removebtn2." + id).addClass("show");
+                $(".editbtn." + id).addClass("show");
             }
         });
     }
 
-    $(".editbtn2").click(function () {
+    $(".editbtn").click(function () {
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
         var id = $(this).attr("hodnota");
         var comment = comments[id]; // vyberie aktualny comment zo vsetkych
@@ -155,9 +155,9 @@ function load() {
         $("#" + id + ".comment").addClass("editing");
         window.scrollTo(0, 0);
 
-    }); // end of click on editbtn2
+    }); // end of click on editbtn
 
-    $(".removebtn2").click(function () {
+    $(".removebtn").click(function () {
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
         var id = $(this).attr("hodnota");
 
