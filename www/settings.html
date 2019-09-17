@@ -11,8 +11,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
   <script src="js/menu.js"></script>
-  <script src="js/main2.js"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <script src="js/settings.js"></script>
+  <!-- <script src="js/main2.js"></script> -->
+  <link rel="stylesheet" href="css/style.css" id="style">
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 </head>
@@ -67,7 +68,7 @@
       <div class="col-6">
 
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="invertswitch">
           <span class="slider round"></span>
         </label>
         
@@ -83,8 +84,8 @@
   
         <div class="col-6">
   
-          <label class="switch">
-            <input type="checkbox">
+          <label class="switch" >
+            <input type="checkbox" id="darkthemeswitch">
             <span class="slider round"></span>
           </label>
           

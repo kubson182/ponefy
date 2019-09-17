@@ -1,0 +1,486 @@
+body {
+  background-color: bisque;
+}
+
+nav {
+  position: fixed;
+  display: block;
+  width: 100%;
+  z-index: 2;
+}
+
+.ccontainer-fluid.menubar {
+  z-index: 900;
+}
+
+a,
+a:hover,
+a:visited {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.menubar {
+  background-color: black;
+  color: white;
+  line-height: 20px;
+  font-size: 20px;
+  padding: 0;
+  /* text-align: center; */
+
+}
+
+.title {
+  font-size: 24px;
+  position: relative;
+  top: 15px;
+}
+.title a {
+  color: white !important;
+}
+
+.nav-toggler {
+  background-color: black;
+  color: white;
+  border: none;
+  float: right;
+  padding-top: 5px;
+}
+
+.backArrow {
+  font-size: 40px;
+  position: relative;
+  top: 10px;
+  color: white !important;
+}
+
+#menutext {
+  position: relative;
+  bottom: 12px;
+  padding-left: 10px;
+
+}
+
+.menuicon {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#submenu {
+  position: fixed;
+  right: -100%;
+  transition: right 0.4s;
+  z-index: -1;
+  height: 100vh;
+}
+
+#submenu.displayed {
+  position: absolute;
+  right: 0;
+  transition: right 0.4s;
+  z-index: -1;
+  height: 100vh;
+}
+
+.icon::before{
+  margin-right: 5px;
+  margin-left: 0px !important;
+}
+
+#main {
+  position: relative;
+  padding-top: 60px;
+  z-index: 0;
+
+}
+
+.tile {
+  display: block;
+  height: 80px;
+  background-image: linear-gradient(rgb(214, 214, 214), rgb(179, 179, 179));
+  border: 1px black solid;
+  box-shadow: 1px 1px 2px black;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.intile {
+  width: 100%;
+  height: 100%;
+  padding: 20px 0px;
+}
+
+.intile span {
+  font-size: 25px;
+  vertical-align: middle;
+
+}
+
+#content {
+  min-height: 50px;
+}
+
+.formBtn {
+  border: 3px black solid;
+  margin-top: 10px;
+  width: 49%;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#forma>.formBtn {
+  width: 49%;
+}
+
+#updateforma>.formBtn {
+  width: 49%;
+  display: inline-block;
+}
+
+#cancelforma>.formBtn {
+  width: 49%;
+  float: right;
+}
+
+.disabled {
+  display: none;
+}
+
+.selection {
+  display: inline-block;
+  /* width: 33%; */
+  height: 50px;
+  text-align: center;
+  border: 1px black solid;
+  padding-top: 13px;
+  margin-top: 10px;
+}
+
+.active {
+  background-color: yellow;
+}
+
+.submenu-items {
+  list-style-type: none;
+  margin-top: 0px;
+  padding-left: 0;
+  cursor: pointer;
+  /* background-color: black; */
+}
+
+.submenu-settings {
+  position: absolute;
+  bottom: 50px;
+  list-style: none;
+  padding-left: 0px;
+}
+.submenu-settings li{
+  padding: 15px 10px;
+}
+
+#menu-filters{
+  z-index: 100;
+}
+
+.submenu-filters{
+  list-style: none;
+  padding-left: 0px;
+  z-index: -1;
+  position: relative;
+  top: -207px;
+  /* visibility: hidden; */
+  transition: top 0.3s, z-index 0.1s;
+  
+  
+}
+
+.submenu-filters li {
+  padding-left: 30px !important;
+}
+
+#menu-statistics{
+  position: relative;
+  top: -207px;
+  transition: top 0.3s;
+}
+
+.opened {
+  top:0px !important;
+  transition: top 0.3s, z-index 0.6s;
+  visibility: visible;
+  z-index: 0;  
+}
+
+.flaticon-right-arrow::before {
+  display: inline-block;
+  transition: transform 0.5s;
+}
+
+.rotated::before {
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform 0.5s;
+}
+
+.submenu-items li {
+  border-bottom: 1px gray solid;
+  padding: 15px 10px;
+  background-color: black;
+}
+
+.actual {
+  font-weight: bold;
+  color: bisque;
+}
+
+
+.output {
+  background-color: white;
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 10px 10px;
+  min-height: 50px;
+}
+
+.comment {
+  width: 100%;
+  min-height: 70px;
+  border: 1px black solid;
+  border-radius: 5px;
+  display: block;
+  padding: 10px;
+  background-color: white;
+  position: relative;
+  left: 0px;
+  top: -20px;
+  transition: left, 0.5s;
+  opacity: 1;
+  transition: opacity, 0.3s;
+}
+
+.comment-date {
+  margin: 2px;
+  float: left;
+  font-size: 13px;
+}
+
+.comment-content {
+  font-size: 20px;
+  display: block;
+  clear: both;
+  font-family: 'IBM Plex Sans', sans-serif;
+
+}
+
+.p {
+  background-image: linear-gradient(rgba(0, 255, 0, 0), rgba(0, 255, 0, 0.1));
+  border: 2px solid green;
+}
+
+.n {
+  background-image: linear-gradient(rgba(255, 0, 0, 0), rgba(255, 0, 0, 0.1));
+  border: 2px solid red;
+}
+
+.f {
+  background-image: linear-gradient(rgba(0, 0, 255, 0), rgba(0, 0, 255, 0.1));
+  border: 2px solid rgb(4, 45, 228);
+}
+
+.errormsg {
+  text-align: center;
+  color: red;
+  font-size: 50px;
+}
+
+.todelete {
+  left: 100px;
+  transition: left, 0.5s;
+}
+
+.toedit {
+  left: -100px;
+  transition: left, 0.5s;
+}
+
+.removebtn {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0.349);
+  display: inline;
+  opacity: 0;
+  transition: opacity, 0.3s;
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: 30px;
+  padding: 15px 10px 10px 10px;
+  cursor: pointer;
+}
+
+.editbtn {
+  opacity: 0;
+  transition: opacity, 1s;
+  position: relative;
+  top: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(255, 251, 0, 0.349);
+  color: rgb(0, 0, 0);
+  padding: 15px 25px 10px 25px;
+  float: right;
+  cursor: pointer;
+
+}
+
+.editing {
+  border: 2px solid rgb(209, 160, 0);
+}
+
+.show {
+  opacity: 1;
+  transition: opacity, 1s;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity, 1s;
+}
+
+/* STATISTICS */
+
+.statistics-overview {
+  margin-top: 20px;
+}
+
+.positive {
+  font-weight: bold;
+  color: green;
+}
+
+.negative {
+  font-weight: bold;
+  color: red;
+}
+
+.FYI {
+  font-weight: bold;
+  color: blue;
+}
+
+
+
+#daterange {
+  width: 100%;
+}
+
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+  font-weight: normal !important;
+}
+
+
+/* SETTINGS */
+.switch {
+  position: relative;
+  /* display: inline-block; */
+  width: 60px;
+  height: 34px;
+  float: right;
+  top: 3px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(26, 206, 101);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(26, 206, 101);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.settings {
+  margin-top: 20px;
+}
+
+.settings-label {
+  font-size: 20px;
+  position: relative;
+  top: 10px;
+}
