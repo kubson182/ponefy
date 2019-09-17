@@ -45,12 +45,16 @@
             <a onclick="location.href='index.html';">
               <li><span class="icon flaticon-home">Home</span></li>
             </a>
+            <a onclick="location.href='statistics.html';">
+              <li><span class="icon flaticon-line-chart">Statistics</span></li>
+            </a>
+          </ul>
 
           <ul class="submenu-settings">
             <a onclick="location.href='settings.html';">
-                <li><span class="icon flaticon-two-settings-cogwheels">Settings</span></li>
-              </a>
-        </ul>
+              <li><span class="icon flaticon-two-settings-cogwheels">Settings</span></li>
+            </a>
+          </ul>
         </div>
 
       </div>
@@ -67,10 +71,9 @@
 
       <div class="col-6">
 
-        <label class="switch">
-          <input type="checkbox" id="invertswitch">
-          <span class="slider round"></span>
-        </label>
+        <div class="switch" id="invertswitch">
+          <div class="switcher" id="invertswitcher"></div>
+        </div>
         
       </div>
     </div>
@@ -83,11 +86,10 @@
         </div>
   
         <div class="col-6">
-  
-          <label class="switch" >
-            <input type="checkbox" id="darkthemeswitch">
-            <span class="slider round"></span>
-          </label>
+          <div class="switch" id="darkthemeswitch">
+            <div class="switcher" id="darkthemeswitcher"></div>
+          </div>
+          
           
         </div>
 
