@@ -15,6 +15,10 @@
   <!-- <script src="js/main.js" id="mainjs"></script> -->
   <link rel="stylesheet" href="css/style.css" id="style">
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  
+
+
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 </head>
 
@@ -95,9 +99,44 @@
 
 
     </div>
+
+    <hr>
+    <div class="row ">
+      <div class="col-12">
+      <span class="settings-title">Custom tags</span>
+    </div>
+    </div>
+    <hr>
+  <form method="POST">
+    <div class="row">
+      
+      <div class="col-6">
+
+          
+              
+          <input class="form-control" type="text" id="newtag" name="newtag">
+          
+          
+
+      </div>
+
+      <div class="col-2">
+          <div id="colorSelector" style="background-color: #ff0000;"></div>
+      </div>
+
+      <div class="col-4">
+        <div class="newtagbtn"  onclick="newTag();">Add Tag</div>
+
+      </div>
+    
+
+    </div>
+</form>
   </div>
 
 
+  <link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css" />
+  <script type="text/javascript" src="js/colorpicker.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
   </script>

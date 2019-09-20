@@ -487,3 +487,22 @@ html body .ui-group-theme-a a {
   left: 31px;
   transition: left 0.4s;
 }
+
+#colorSelector {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.newtagbtn {
+  border: 1px solid black;
+  border-radius: 5px;
+  /* background-color: rgba(162, 255, 86, 0.918); */
+  color: rgb(0, 0, 0);
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 8px;
+}
+
