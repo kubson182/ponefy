@@ -66,6 +66,34 @@ $(document).ready(function () {
             });
         }
 
+        //picking color for new tag
+        
+        $('#colorSelector').ColorPicker({
+            color: '#ff0000',
+            // flat: true,
+            onShow: function (colpkr) {
+                $(colpkr).fadeIn(500);
+                return false;
+            },
+            onHide: function (colpkr) {
+                $(colpkr).fadeOut(500);
+                return false;
+            },
+            onChange: function (hsb, hex, rgb) {
+                $('#colorSelector').css('backgroundColor', '#' + hex);
+                // console.log(hex);
+                var color = hex;
+                $('#colorSelector').attr('value',color);
+                return false;
+            },
+            onSubmit: function (hex) {
+                console.log(hex);
+                var color = hex;
+            }
+
+        });
+        
+        
 
 
 
@@ -74,10 +102,13 @@ $(document).ready(function () {
         // Sorry! No Web Storage support..
     }
 
-
+    
 
 
 });
+
+
+
 
 //function to turn on the dark theme  
 function darkthemeon() {
