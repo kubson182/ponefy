@@ -4,7 +4,7 @@ $(document).ready(function () {
     if (typeof (Storage) !== "undefined") {
         // Code for localStorage/sessionStorage.
         //console.log("local storage is supproted");
-
+        localStorage.setItem("color","ff0000");
         var settings = JSON.parse(localStorage.getItem("settings"));
 
         if (settings === null) {
@@ -82,8 +82,8 @@ $(document).ready(function () {
             onChange: function (hsb, hex, rgb) {
                 $('#colorSelector').css('backgroundColor', '#' + hex);
                 // console.log(hex);
-                var color = hex;
-                $('#colorSelector').attr('value',color);
+                localStorage.setItem("color",hex);
+                $('#colorSelector').attr('value',hex);
                 return false;
             },
             onSubmit: function (hex) {
@@ -160,4 +160,26 @@ function invertoff() {
     console.log("invert setting: " + invert + ", darktheme: " + darktheme);
     // $("#mainjs").attr("src","js/main.js");
     document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
+}
+
+
+function newTag (){
+    var tagname = $("#tagname").val();
+    var color = localStorage.getItem("color");
+    // console.log(color);
+    var tag = [tagname,color];
+
+    var tags = JSON.parse(localStorage.getItem("tags"));
+
+    if(tags == null){
+        //if there are no tags
+        
+    }
+
+
+
+
+    // localStorage.setItem("tags", JSON.stringify(tags));
+
+
 }
