@@ -506,3 +506,37 @@ html body .ui-group-theme-a a {
   padding-top: 8px;
 }
 
+.tag-settings{
+  margin-top: 10px;
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: black;
+  text-shadow: none;
+  
+}
+
+.tag-settings div{
+  background-color: rgba(255, 255, 255, 0.600);
+  border-radius: 4px;
+  padding: 0px 3px;
+  display: inline;
+}
+
+.tageditbtn {
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+
+}
+
+.tagremovebtn {
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+}

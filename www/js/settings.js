@@ -102,7 +102,7 @@ $(document).ready(function () {
         // Sorry! No Web Storage support..
     }
 
-    
+    taglist();
 
 
 });
@@ -170,16 +170,25 @@ function newTag (){
     var tag = [tagname,color];
 
     var tags = JSON.parse(localStorage.getItem("tags"));
-
-    if(tags == null){
-        //if there are no tags
-        
+    // console.log(tags);
+    if(tags === null){
+        var tags = [["tagname","color"],[tagname,color]];
+        localStorage.setItem("tags", JSON.stringify(tags));
+        // console.log("prvy tag pridany");
+    }else{
+        tags.push(tag);
+        localStorage.setItem("tags", JSON.stringify(tags));
+        // console.log("tag pridany");
     }
 
+    $("#taglist").prepend('<div class="row"><div class="col-6"><div class="tag-settings" style="background-color: #'+ color +'">'+ tagname +'</div></div></div>');
+}
 
-
-
-    // localStorage.setItem("tags", JSON.stringify(tags));
-
-
+function taglist(){
+    var tags = JSON.parse(localStorage.getItem("tags"));
+    var i = 1;
+    while(i < tags.length){
+        $("#taglist").prepend('<div class="row"><div class="col-6"><div class="tag-settings" style="background-color: #'+ tags[i][1] +'"><div>'+ tags[i][0] +'</div></div></div><div class="col-3"><div class="tageditbtn tag-settings"></div></div><div class="col-3"><div class="tagremovebtn tag-settings"></div></div></div>');
+        i++;
+    }
 }
