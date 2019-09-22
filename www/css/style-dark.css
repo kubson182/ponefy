@@ -19,6 +19,11 @@ nav {
   z-index: 2;
 }
 
+hr {
+  border-top: 1px solid rgb(167, 167, 167);
+}
+
+
 .ccontainer-fluid.menubar {
   z-index: 900;
 }
@@ -510,4 +515,88 @@ html body .ui-group-theme-a a {
 .on {
   left: 31px;
   transition: left 0.4s;
+}
+
+#colorSelector {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#taglist .row {
+  margin-top: 10px;
+}
+
+.newtagbtn {
+  border: 1px solid white;
+  border-radius: 5px;
+  /* background-color: rgba(162, 255, 86, 0.918); */
+  color: white;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.updatetagbtn {
+  border: 1px solid white;
+  border-radius: 5px;
+  /* background-color: rgba(162, 255, 86, 0.918); */
+  color: white;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.tag-settings{
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid white;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* color: black; */
+  text-shadow: none;
+  
+}
+
+.light {
+  color: black;
+}
+
+.dark {
+  color: white;
+}
+
+/* .tag-settings div{
+  background-color: rgba(255, 255, 255, 0.600);
+  border-radius: 4px;
+  padding: 0px 3px;
+  display: inline;
+} */
+
+.tageditbtn {
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 100%;
+  color: white;
+
+}
+
+.tagremovebtn {
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 100%;
+  color: white;
+}
+
+.editingtag {
+  background-color: rgb(90, 89, 88);
+}
+#newtagform {
+  margin-bottom: 30px;
 }
