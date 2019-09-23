@@ -9,7 +9,7 @@ if (typeof (Storage) !== "undefined") {
         var mark = $("#mark").attr("value");
         var content = $("#content").val();
         var comments = [
-            ["mark", "date", "content"]
+            ["mark", "date", "content",["tags"]]
         ]
 
         if (content.length < 1) {
@@ -23,7 +23,8 @@ if (typeof (Storage) !== "undefined") {
                 // console.log("bolo null");
                 // console.log(parseInt(localStorage.id)); //vypise 1
                 var id = parseInt(localStorage.id); //id = 1 ciselne
-                var comment = [mark, new Date(), content];
+                var tags = [];
+                var comment = [mark, new Date(), content, tags];
                 comments.push(comment); //do pola pridam aktualny comment
                 localStorage.setItem("comments", JSON.stringify(comments));
 
@@ -33,7 +34,8 @@ if (typeof (Storage) !== "undefined") {
 
                 var id = parseInt(localStorage.id); //do id priradi cislo z localstorage.id
 
-                var comment = [mark, new Date(), content];
+                var tags = [];
+                var comment = [mark, new Date(), content, tags];
 
                 var comments = JSON.parse(localStorage.getItem("comments"));
                 comments.push(comment);
@@ -98,6 +100,7 @@ function load() {
                 $(".active").removeClass("active");
                 $("#updateforma").addClass("disabled");
                 $("#cancelforma").addClass("disabled");
+                $("#tagsforma").addClass("disabled");
                 $("#mark").attr("value", "");
             } else {
                 $(this).addClass("todelete");
@@ -128,11 +131,24 @@ function load() {
     }
 
     $(".editbtn").click(function () {
+        $(".editing").removeClass("editing");
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
+        var tags = JSON.parse(localStorage.getItem("tags")); //do comments  priradi komenty z localstorage, vytvori pole
         var id = $(this).attr("hodnota");
         var comment = comments[id]; // vyberie aktualny comment zo vsetkych
+
         var mark = comment[0]; // aka je znacka commentu
         var content = comment[2]; // obsah commentu
+
+        var currenttags = comment[3];
+        localStorage.setItem("currenttags", JSON.stringify(currenttags));
+        console.log(comment);
+        // console.log(currenttags);
+        // console.log(currenttags.length);
+        
+       for(var i=0; i<currenttags.length; i++){
+           $("#"+ currenttags[i] +".tag-settings").addClass("editing");
+       }
 
         $("#content").val(content);
         $(".active").removeClass("active");
@@ -141,8 +157,9 @@ function load() {
         $("#forma").addClass("disabled");
         $("#updateforma").removeClass("disabled");
         $("#cancelforma").removeClass("disabled");
+        $("#tagsforma").removeClass("disabled");
         var i = comments.length - 1;
-        console.log(id);
+        // console.log(id);
         while (i > 0) {
             if (i != id) {
                 $("#" + i).removeClass("toedit");
@@ -151,7 +168,7 @@ function load() {
             // console.log(comments[i]);
             i--;
         }
-        $(".editing").removeClass("editing");
+        
         $("#" + id + ".comment").addClass("editing");
         window.scrollTo(0, 0);
 
@@ -185,14 +202,23 @@ function update() {
     var mark = $("#mark").attr("value");
     var content = $("#content").val();
     var origindate = comments[id][1];
-    var comment = [mark, origindate, content];
+
+
+    var tags = JSON.parse(localStorage.getItem("currenttags"));
+if(tags === null){
+    tags = [];
+}
+
+    var comment = [mark, origindate, content, tags];
     comments.splice(id, 1, comment);
     localStorage.setItem("comments", JSON.stringify(comments));
     setTimeout(function () {
         load();
         $("#updateforma").addClass("disabled");
         $("#cancelforma").addClass("disabled");
+        $("#tagsforma").addClass("disabled");
         $("#forma").addClass("disabled");
+        localStorage.removeItem("currenttags");
         $("#content").val("");
         $(".active").removeClass("active");
         $("#mark").attr("value", "");
@@ -209,6 +235,7 @@ function cancel() {
     $(".editing").removeClass("editing");
     $("#updateforma").addClass("disabled");
     $("#cancelforma").addClass("disabled");
+    $("#tagsforma").addClass("disabled");
     $("#forma").addClass("disabled");
 
 } //end of cancel
@@ -238,9 +265,63 @@ function filterOff() {
     $(".f").fadeIn(900);
 }
 
+
+// tags listing in modal
+function taglistmodal () {
+    var tags = JSON.parse(localStorage.getItem("tags"));
+    var i = 1;
+    $("#taglistcomment").html("");
+    while(i < tags.length){
+
+        //dark or light?
+       var color = tags[i][2]; 
+        
+        $("#taglistcomment").prepend('<div class="col-6"><div onclick="tagonoff('+ tags[i][0] +')" class="tag-settings '+ lightOrDark(color) +' " id="'+ tags[i][0] +'" style="background-color: #'+ tags[i][2] +'"><div>'+ tags[i][1] +'</div></div></div>');
+
+        i++;
+    }
+}
+
+
+
+
+function tagonoff(tagid){
+    var tagid = tagid.toString();
+    // console.log(tagid);
+    // var commentid = $(".editing").attr("id");
+    var currenttags = JSON.parse(localStorage.getItem("currenttags"));
+    if (currenttags === null){
+    var currenttags = [];
+    }
+
+    var isit = jQuery.inArray(tagid, currenttags );
+
+    if(isit == -1){
+        currenttags.push(tagid);
+        console.log("added");
+        $("#"+tagid+".tag-settings").addClass("editing");
+    }else{
+        currenttags.splice(isit,1);
+        $("#"+tagid+".tag-settings").removeClass("editing")
+    }
+
+    // currenttags.push(tagid); 
+    // var comments = JSON.parse(localStorage.getItem("comments"));
+    
+
+    localStorage.setItem("currenttags", JSON.stringify(currenttags));
+    
+    
+
+}
+
+
 $(document).ready(function () {
     //nacitat komenty
     load();
+    taglistmodal();
+
+    localStorage.removeItem("currenttags");
 
     // selecting value for mark, highlighting and enabling submit
     $(".selection").click(function () {
@@ -257,5 +338,7 @@ $(document).ready(function () {
         }
     });
 
+
+    
 
 });

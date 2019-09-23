@@ -1,55 +1,3 @@
-    function darkthemeon() {
-        var settings = JSON.parse(localStorage.getItem("settings"));
-        var darktheme = 1;
-        var invert = settings[1][0];
-        var setting = [invert, darktheme];
-        settings[1] = setting;
-        localStorage.setItem("settings", JSON.stringify(settings));
-        // console.log("on");
-        // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
-        $("#style").attr("href", "css/style-dark.css");
-    }
-    
-    //function to turn off the dark theme
-    function darkthemeoff() {
-        var settings = JSON.parse(localStorage.getItem("settings"));
-        var darktheme = 0;
-        var invert = settings[1][0];
-        var setting = [invert, darktheme];
-        settings[1] = setting;
-        localStorage.setItem("settings", JSON.stringify(settings));
-        // console.log("off");
-        // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
-        $("#style").attr("href", "css/style.css");
-    }
-    
-    function inverton() {
-        var settings = JSON.parse(localStorage.getItem("settings"));
-        var invert = 1;
-        var darktheme = settings[1][1];
-        var setting = [invert, darktheme];
-        settings[1] = setting;
-        localStorage.setItem("settings", JSON.stringify(settings));
-        // console.log("on");
-        // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
-        // $("#mainjs").attr("src","js/main2.js");
-        document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
-    }
-    
-    function invertoff() {
-        var settings = JSON.parse(localStorage.getItem("settings"));
-        var invert = 0;
-        var darktheme = settings[1][1];
-        var setting = [invert, darktheme];
-        settings[1] = setting;
-        localStorage.setItem("settings", JSON.stringify(settings));
-        // console.log("off");
-        // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
-        // $("#mainjs").attr("src","js/main.js");
-        document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
-    }
-
-
     function lightOrDark(color) {
     
         // Variables for red, green, blue values
@@ -101,20 +49,26 @@
     function newTag (){
         var tagname = $("#tagname").val();
         var color = localStorage.getItem("color");
+        var tagid = JSON.parse(localStorage.getItem("tagid"));
+
+        if(tagid === null){
+            tagid = 1;
+            localStorage.setItem("tagid",tagid);
+        }else{
+            tagid++;
+            localStorage.setItem("tagid",tagid);
+        }
+
         // console.log(color);
-        var tag = [tagname,color];
+        var tag = [tagid,tagname,color];
     
         var tags = JSON.parse(localStorage.getItem("tags"));
         // console.log(tags);
-        if(tags === null){
-            var tags = [["tagname","color"],[tagname,color]];
-            localStorage.setItem("tags", JSON.stringify(tags));
-            // console.log("prvy tag pridany");
-        }else{
+        
             tags.push(tag);
             localStorage.setItem("tags", JSON.stringify(tags));
             // console.log("tag pridany");
-        }
+        
         $("#tagname").val("");
         taglist();
     }
@@ -140,6 +94,13 @@
 
 function taglist(){
     var tags = JSON.parse(localStorage.getItem("tags"));
+
+    if(tags === null){
+        var tags = [["tagid","tagname","color"]];
+        localStorage.setItem("tags", JSON.stringify(tags));
+        // console.log("prvy tag pridany");
+    }else{
+
     var i = 1;
     $("#taglist").html("");
     while(i < tags.length){
@@ -147,15 +108,15 @@ function taglist(){
         //dark or light?
        var color = tags[i][1]; 
         
-        $("#taglist").prepend('<div class="row" id="'+ i +'"><div class="col-6"><div class="tag-settings '+ lightOrDark(color) +' " id="'+ i +'" style="background-color: #'+ tags[i][1] +'"><div>'+ tags[i][0] +'</div></div></div><div class="col-3"><div class="tageditbtn tag-settings" id="'+ i +'">edit</div></div><div class="col-3"><div class="tagremovebtn tag-settings" id="'+ i +'">remove</div></div></div>');
+        $("#taglist").prepend('<div class="row" poradie="'+ i +'"><div class="col-6"><div class="tag-settings '+ lightOrDark(color) +' " poradie="'+ i +'" style="background-color: #'+ tags[i][2] +'"><div>'+ tags[i][1] +'</div></div></div><div class="col-3"><div class="tageditbtn tag-settings" poradie="'+ i +'">edit</div></div><div class="col-3"><div class="tagremovebtn tag-settings" poradie="'+ i +'">remove</div></div></div>');
         i++;
     }
 
     $(".tagremovebtn").click(function () {
         var tags = JSON.parse(localStorage.getItem("tags")); //do comments  priradi komenty z localstorage, vytvori pole
-        var id = $(this).attr("id");
+        var poradie = $(this).attr("poradie");
         // console.log(id);
-        tags.splice(id, 1);
+        tags.splice(poradie, 1);
         localStorage.setItem("tags", JSON.stringify(tags));
     
         setTimeout(function () {
@@ -167,16 +128,16 @@ function taglist(){
 
     $(".tageditbtn").click(function () {
         var tags = JSON.parse(localStorage.getItem("tags")); //do comments  priradi komenty z localstorage, vytvori pole
-        var id = $(this).attr("id");
+        var poradie = $(this).attr("poradie");
         // console.log(id);
-        var tagname = tags[id][0];
+        var tagname = tags[poradie][1];
         $("#tagname").val(tagname);
         $(".newtagbtn").html("update");
         $(".newtagbtn").addClass("updatetagbtn");
         $(".newtagbtn").removeClass("newtagbtn");
         $(".updatetagbtn").attr("onclick","updatetag()");
         $(".editingtag").removeClass("editingtag");
-        $(".row#"+id).addClass("editingtag");
+        $(".row#"+poradie).addClass("editingtag");
 
 
         localStorage.setItem("tags", JSON.stringify(tags));
@@ -186,6 +147,8 @@ function taglist(){
         // }, 500);
     
     });
+
+}
 
 }
 
@@ -203,6 +166,8 @@ $(document).ready(function () {
     localStorage.setItem("color","ff0000");
     var settings = JSON.parse(localStorage.getItem("settings"));
 
+    var settings = JSON.parse(localStorage.getItem("settings"));
+
     if (settings === null) {
         //initial settings
         settings = [
@@ -213,7 +178,8 @@ $(document).ready(function () {
         var setting = [invert, darktheme];
         settings.push(setting);
         localStorage.setItem("settings", JSON.stringify(settings));
-    } else {
+    }
+
         var invert = settings[1][0];
         var darktheme = settings[1][1];
         console.log("invert setting: " + invert + ", darktheme: " + darktheme);
@@ -239,6 +205,58 @@ $(document).ready(function () {
 
 
 
+        function darkthemeon() {
+            var settings = JSON.parse(localStorage.getItem("settings"));
+            var darktheme = 1;
+            var invert = settings[1][0];
+            var setting = [invert, darktheme];
+            settings[1] = setting;
+            localStorage.setItem("settings", JSON.stringify(settings));
+            // console.log("on");
+            // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
+            $("#style").attr("href", "css/style-dark.css");
+        }
+        
+        //function to turn off the dark theme
+        function darkthemeoff() {
+            var settings = JSON.parse(localStorage.getItem("settings"));
+            var darktheme = 0;
+            var invert = settings[1][0];
+            var setting = [invert, darktheme];
+            settings[1] = setting;
+            localStorage.setItem("settings", JSON.stringify(settings));
+            // console.log("off");
+            // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
+            $("#style").attr("href", "css/style.css");
+        }
+        
+        function inverton() {
+            var settings = JSON.parse(localStorage.getItem("settings"));
+            var invert = 1;
+            var darktheme = settings[1][1];
+            var setting = [invert, darktheme];
+            settings[1] = setting;
+            localStorage.setItem("settings", JSON.stringify(settings));
+            // console.log("on");
+            // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
+            // $("#mainjs").attr("src","js/main2.js");
+            document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
+        }
+        
+        function invertoff() {
+            var settings = JSON.parse(localStorage.getItem("settings"));
+            var invert = 0;
+            var darktheme = settings[1][1];
+            var setting = [invert, darktheme];
+            settings[1] = setting;
+            localStorage.setItem("settings", JSON.stringify(settings));
+            // console.log("off");
+            // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
+            // $("#mainjs").attr("src","js/main.js");
+            document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
+        }
+
+
 
         $("#invertswitch").click(function () {
             $("#invertswitch").toggleClass("checked");
@@ -260,7 +278,7 @@ $(document).ready(function () {
                 darkthemeon();
             }
         });
-    }
+    
 
 
 
