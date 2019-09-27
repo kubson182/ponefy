@@ -237,10 +237,7 @@ $(document).ready(function () {
             var setting = [invert, darktheme];
             settings[1] = setting;
             localStorage.setItem("settings", JSON.stringify(settings));
-            // console.log("on");
-            // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
-            // $("#mainjs").attr("src","js/main2.js");
-            document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
+            
         }
         
         function invertoff() {
@@ -250,10 +247,7 @@ $(document).ready(function () {
             var setting = [invert, darktheme];
             settings[1] = setting;
             localStorage.setItem("settings", JSON.stringify(settings));
-            // console.log("off");
-            // console.log("invert setting: " + invert + ", darktheme: " + darktheme);
-            // $("#mainjs").attr("src","js/main.js");
-            document.body.appendChild(document.createElement('script')).src = 'js/main2.js';
+           
         }
 
 
