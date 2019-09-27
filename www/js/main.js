@@ -1,88 +1,77 @@
-if (typeof (Storage) !== "undefined") {
-    // Code for localStorage/sessionStorage.
-    //console.log("local storage is supproted");
+function post(){
+    function comment(id, mark, date, content, tags) {
+        this.id = id;
+        this.mark = mark;
+        this.date = date;
+        this.content = content;
+        this.tags = tags;
+      }
 
-    var d = new Date();
+    var mark = $("#mark").attr("value");
+    var content = $("#content").val();
+    var date = new Date();
+    var comments = [];
+    if (content.length < 1) {
+        alert("You have to enter at least 1 character")
+    } else {
+        if (localStorage.id === undefined) {
+            localStorage.id = 1;
+            // console.log("bolo null");
+            var id = parseInt(localStorage.id); //id = 1 ciselne
 
+            var comment = new comment(id, mark, date, content, null);
+            comments.push(comment); //do pola pridam aktualny comment
+            localStorage.setItem("comments", JSON.stringify(comments));
 
-    function post() {
-        var mark = $("#mark").attr("value");
-        var content = $("#content").val();
-        var comments = [
-            ["mark", "date", "content",["tags"]]
-        ]
-
-        if (content.length < 1) {
-            // document.getElementById("error").innerHTML = "<span class='errormsg'>MUSIS ZADAT TEXT</span>";
-            alert("you have to enter at least 1 character")
-            $('.errormsg').fadeOut(1500);
+            //increment id
+            localStorage.id = id + 1;
         } else {
 
-            if (localStorage.id === undefined) {
-                localStorage.id = 1;
-                // console.log("bolo null");
-                // console.log(parseInt(localStorage.id)); //vypise 1
-                var id = parseInt(localStorage.id); //id = 1 ciselne
-                var tags = [];
-                var comment = [mark, new Date(), content, tags];
-                comments.push(comment); //do pola pridam aktualny comment
-                localStorage.setItem("comments", JSON.stringify(comments));
+            var id = parseInt(localStorage.id); //do id priradi cislo z localstorage.id
+            var comments = JSON.parse(localStorage.getItem("comments"));
+            var comment = new comment(id, mark, date, content, null);
+            comments.push(comment);
+            localStorage.setItem("comments", JSON.stringify(comments));
 
-                //increment id
-                localStorage.id = id + 1;
-            } else {
-
-                var id = parseInt(localStorage.id); //do id priradi cislo z localstorage.id
-
-                var tags = [];
-                var comment = [mark, new Date(), content, tags];
-
-                var comments = JSON.parse(localStorage.getItem("comments"));
-                comments.push(comment);
-                localStorage.setItem("comments", JSON.stringify(comments));
-
-                //increment id
-                localStorage.id = id + 1;
-            }
+            //increment id
+            localStorage.id = id + 1;
         }
+    }
+
+    setTimeout(
+        load(), 2000);
+
+    $("#content").val('');
+    $(".active").removeClass("active");
+    $("#mark").attr("value", "");
+    $("#forma").addClass("disabled");
+    $("#cancelforma").addClass("disabled");
+  } //end of post
 
 
-        setTimeout(
-            load(), 2000);
 
-        $("#content").val('');
-        $(".active").removeClass("active");
-        $("#mark").attr("value", "");
-        $("#forma").addClass("disabled");
-        $("#cancelforma").addClass("disabled");
-
-    } //koniec post()
-
-} else {
-    console.log("local storage not supproted");
-    // Sorry! No Web Storage support..
-}
-
-function load() {
+  function load() {
 
     var comments = JSON.parse(localStorage.getItem("comments"));
     if (comments === null) {
-        console.log("ziadne komenty");
+        console.log("there are no comments");
 
     } else {
-        var pocet = comments.length;
-        var i = 1;
+        var count = comments.length;
+        var i = 0;
         document.getElementById('komenty').innerHTML = "";
-        while (i < pocet) {
-            var ddd = comments[i][1];
-            // console.log(ddd);
-            // var komdate = ddd.substring(0,10);
-            ddd = new Date(ddd);
-            var month = ddd.getMonth() + 1;
-            var day = ddd.getDate();
-            var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + d.getFullYear();
-
-            $("#komenty").prepend("<div hodnota='" + i + "' class='removebtn " + comments[i][0] + " " + i + "'><span><strong>Remove</strong></span></div><div hodnota='" + i + "' class='editbtn " + comments[i][0] + " " + i + "'><span><strong>Edit</strong></span></div><div id='" + i + "' class='comment " + comments[i][0] + " " + i + "'><span class='comment-date'>" + DateOutput + "</span><span class='comment-content'>" + comments[i][2] + "</span></div>");
+        while (i < count) {
+        var ddd = comments[i].date;
+        // console.log(ddd);
+        // var komdate = ddd.substring(0,10);
+        ddd = new Date(ddd);
+        var month = ddd.getMonth() + 1;
+        var day = ddd.getDate();
+        var DateOutput = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + "-" + ddd.getFullYear();
+        
+            $("#komenty").prepend("<div id='"+ comments[i].id + "' class='removebtn " + comments[i].id + "'><span><strong>Remove</strong></span></div><div id='"+ comments[i].id + "' class='editbtn " + comments[i].id + "'><span><strong>Edit</strong></span></div><div id='" + comments[i].id + "' class='comment " + comments[i].id + " "+ comments[i].mark +"'><span class='comment-date'>" + DateOutput + "</span><div id='commenttags'></div><span class='comment-content'>" + comments[i].content + "</span></div>");
+            //<div class='commenttag'>Custom Tag</div>
+            
             i++;
         }
 
@@ -133,22 +122,16 @@ function load() {
     $(".editbtn").click(function () {
         $(".editing").removeClass("editing");
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
-        var tags = JSON.parse(localStorage.getItem("tags")); //do comments  priradi komenty z localstorage, vytvori pole
-        var id = $(this).attr("hodnota");
-        var comment = comments[id]; // vyberie aktualny comment zo vsetkych
-
-        var mark = comment[0]; // aka je znacka commentu
-        var content = comment[2]; // obsah commentu
-
-        var currenttags = comment[3];
-        localStorage.setItem("currenttags", JSON.stringify(currenttags));
-        console.log(comment);
-        // console.log(currenttags);
-        // console.log(currenttags.length);
-        
-       for(var i=0; i<currenttags.length; i++){
-           $("#"+ currenttags[i] +".tag-settings").addClass("editing");
-       }
+        var id = $(this).attr("id");
+        var index = 0;
+        for(i=0; i<comments.length; i++){
+            if(comments[i].id == id){
+                var comment = comments[i]; //najdi kde v poli sa nachadza prislusny comment
+            }
+        }
+    
+        var mark = comment.mark; // aka je znacka commentu
+        var content = comment.content; // obsah commentu
 
         $("#content").val(content);
         $(".active").removeClass("active");
@@ -176,13 +159,19 @@ function load() {
 
     $(".removebtn").click(function () {
         var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
-        var id = $(this).attr("hodnota");
+        var id = $(this).attr("id");
 
-        comments.splice(id, 1);
+        for(i=0; i<comments.length; i++){
+            if(comments[i].id == id){
+                var index = i; //najdi kde v poli sa nachadza prislusny comment
+            }
+        }
+
+        comments.splice(index, 1);
         console.log(comments)
         localStorage.setItem("comments", JSON.stringify(comments));
 
-        $("." + id).css("opacity", "0");
+        $("#" + id).css("opacity", "0");
         setTimeout(function () {
             $("." + id).hide();
         }, 500);
@@ -196,22 +185,28 @@ function load() {
 
 } //end of load()
 
+
+
 function update() {
     var id = $(".editing").attr("id");
     var comments = JSON.parse(localStorage.getItem("comments"));
     var mark = $("#mark").attr("value");
     var content = $("#content").val();
-    var origindate = comments[id][1];
 
+    for(i=0; i<comments.length; i++){
+        if(comments[i].id == id){
+            var comment = comments[i]; //najdi kde v poli sa nachadza prislusny comment
+            var index = i;
+        }
+    }
 
-    var tags = JSON.parse(localStorage.getItem("currenttags"));
-if(tags === null){
-    tags = [];
-}
-
-    var comment = [mark, origindate, content, tags];
-    comments.splice(id, 1, comment);
+    // set new values for the comment
+    comment.mark = mark;
+    comment.content = content; 
+    
+    comments.splice(index, 1, comment);
     localStorage.setItem("comments", JSON.stringify(comments));
+
     setTimeout(function () {
         load();
         $("#updateforma").addClass("disabled");
@@ -226,6 +221,7 @@ if(tags === null){
 
 } //end of update()
 
+
 function cancel() {
     $("#content").val("");
     $(".active").removeClass("active");
@@ -239,7 +235,6 @@ function cancel() {
     $("#forma").addClass("disabled");
 
 } //end of cancel
-
 
 function filterP() {
     $(".n").fadeOut(600);
@@ -266,64 +261,10 @@ function filterOff() {
 }
 
 
-// tags listing in modal
-function taglistmodal () {
-    var tags = JSON.parse(localStorage.getItem("tags"));
-    var i = 1;
-    $("#taglistcomment").html("");
-    while(i < tags.length){
-
-        //dark or light?
-       var color = tags[i][2]; 
-        
-        $("#taglistcomment").prepend('<div class="col-6"><div onclick="tagonoff('+ tags[i][0] +')" class="tag-settings '+ lightOrDark(color) +' " id="'+ tags[i][0] +'" style="background-color: #'+ tags[i][2] +'"><div>'+ tags[i][1] +'</div></div></div>');
-
-        i++;
-    }
-}
-
-
-
-
-function tagonoff(tagid){
-    var tagid = tagid.toString();
-    // console.log(tagid);
-    // var commentid = $(".editing").attr("id");
-    var currenttags = JSON.parse(localStorage.getItem("currenttags"));
-    if (currenttags === null){
-    var currenttags = [];
-    }
-
-    var isit = jQuery.inArray(tagid, currenttags );
-
-    if(isit == -1){
-        currenttags.push(tagid);
-        console.log("added");
-        $("#"+tagid+".tag-settings").addClass("editing");
-    }else{
-        currenttags.splice(isit,1);
-        $("#"+tagid+".tag-settings").removeClass("editing")
-    }
-
-    // currenttags.push(tagid); 
-    // var comments = JSON.parse(localStorage.getItem("comments"));
-    
-
-    localStorage.setItem("currenttags", JSON.stringify(currenttags));
-    
-    
-
-}
-
-
 $(document).ready(function () {
-    //nacitat komenty
+
     load();
-    taglistmodal();
 
-    localStorage.removeItem("currenttags");
-
-    // selecting value for mark, highlighting and enabling submit
     $(".selection").click(function () {
         var content = $("#content").val();
         $(".active").removeClass("active");
@@ -338,7 +279,5 @@ $(document).ready(function () {
         }
     });
 
-
     
-
-});
+})
