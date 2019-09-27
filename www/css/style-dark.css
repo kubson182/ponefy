@@ -175,6 +175,7 @@ label {
 .formBtn {
   border: 2px white solid;
   margin-top: 10px;
+  background-color: transparent;
   width: 49%;
   height: 50px;
   border-radius: 10px;
@@ -570,33 +571,8 @@ html body .ui-group-theme-a a {
   color: white;
 }
 
-/* .tag-settings div{
-  background-color: rgba(255, 255, 255, 0.600);
-  border-radius: 4px;
-  padding: 0px 3px;
-  display: inline;
-} */
-
-.tageditbtn {
-  min-height: 35px;
-  border-radius: 5px;
-  border: 1px solid white;
-  width: 100%;
+/* modal */
+.modal-content {
+  background: black;
   color: white;
-
-}
-
-.tagremovebtn {
-  min-height: 35px;
-  border-radius: 5px;
-  border: 1px solid white;
-  width: 100%;
-  color: white;
-}
-
-.editingtag {
-  background-color: rgb(90, 89, 88);
-}
-#newtagform {
-  margin-bottom: 30px;
 }

@@ -354,7 +354,51 @@ function filterOff() {
 }
 
 
+var currentversion = "1.0.20190928";
+
+function releaseNotes() {
+    var div = document.createElement('div');
+    div.innerHTML = `<div class="modal" tabindex="-1" role="dialog" id="releasenotesmodal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Release notes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="releaseNotes"> 
+        <p>Hello there! </p>
+        <p>What's new in this version ${currentversion} :</p>
+        <ul>
+          <li>As you can see, the release notes are displaying when the app is updated (also available to open from settings)</li>
+          <li>If you get popup with message "database updated", it means that the structure of how your data are stored has changed from arrays of arrays to arrays of objects. Nothing you have to worry about. It will just make my next updates easier to code ;)</li>
+          <li>You can now use the app offline</li>
+          
+        </ul>
+    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+    
+    
+
+    $("#rn").append(div);
+    $('#releasenotesmodal').modal('show');
+}
+
+
 $(document).ready(function () {
+    
+
+    if(localStorage.getItem("version") != currentversion){
+        releaseNotes();
+        localStorage.setItem("version",currentversion);
+    }
 
 
     function transform(id, mark, date, content, tags) {
@@ -385,7 +429,7 @@ $(document).ready(function () {
         }
         comments.splice(0,1);
         localStorage.setItem("comments", JSON.stringify(comments));
-        alert("databaza bola updatnuta");
+        alert("database updated");
         load();
 
     }
