@@ -163,18 +163,9 @@ a:visited {
   cursor: pointer;
 }
 
-#forma>.formBtn {
-  width: 49%;
-}
 
-#updateforma>.formBtn {
-  width: 49%;
-  display: inline-block;
-}
-
-#cancelforma>.formBtn {
-  width: 49%;
-  float: right;
+#tagsforma {
+  width: 100% !important;
 }
 
 .disabled {
@@ -401,7 +392,7 @@ a:visited {
 }
 
 .editing {
-  border: 2px solid rgb(209, 160, 0);
+  border: 2px solid rgb(209, 160, 0) !important;
 }
 
 .show {
@@ -495,6 +486,10 @@ html body .ui-group-theme-a a {
   border-radius: 5px;
 }
 
+#taglist .row {
+  margin-top: 10px;
+}
+
 .newtagbtn {
   border: 1px solid black;
   border-radius: 5px;
@@ -506,3 +501,80 @@ html body .ui-group-theme-a a {
   padding-top: 8px;
 }
 
+.updatetagbtn {
+  border: 1px solid black;
+  border-radius: 5px;
+  /* background-color: rgba(162, 255, 86, 0.918); */
+  color: rgb(0, 0, 0);
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.tag-settings{
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* color: black; */
+  text-shadow: none;
+  
+}
+
+.light {
+  color: black;
+}
+
+.dark {
+  color: white;
+}
+
+/* .tag-settings div{
+  background-color: rgba(255, 255, 255, 0.600);
+  border-radius: 4px;
+  padding: 0px 3px;
+  display: inline;
+} */
+
+.tageditbtn {
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+
+}
+
+.tagremovebtn {
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.editingtag {
+  background-color: bisque;
+}
+
+#newtagform {
+  margin-bottom: 30px;
+}
+
+#taglistcomment .tag-settings {
+  display: block;
+}
+
+.tagselected {
+  border: 3px solid green;
+}
+
+.commenttag {
+  margin-left: 10px;
+  font-size: 10px;
+  padding: 2px 4px;
+  border: 1px solid;
+  border-radius: 4px;
+  display: inline-block;
+}

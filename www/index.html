@@ -108,7 +108,11 @@
             <div onclick="cancel();" class="disabled formBtn" id="cancelforma">
               <span>Cancel</span>
             </div>
-            <div id="error"></div>
+
+            <div class="disabled formBtn" data-toggle="modal" data-target="#tagsmodal" id="tagsforma">
+              <span>Custom tags</span>
+            </div>
+            
           </form>
         </div>
         <div id="komenty">
@@ -116,6 +120,37 @@
       </div>
     </div>
   </div>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="tagsmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Custom Tags</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row" id="taglistcomment">
+
+        </div>
+       
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

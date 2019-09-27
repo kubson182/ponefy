@@ -103,18 +103,18 @@
     <hr>
     <div class="row ">
       <div class="col-12">
-      <span class="settings-title">Custom tags</span>
+      <span class="settings-label">Custom tags</span>
     </div>
     </div>
     <hr>
-  <form method="POST">
+  <form method="POST" id="newtagform">
     <div class="row">
       
       <div class="col-6">
 
           
               
-          <input class="form-control" type="text" id="newtag" name="newtag">
+          <input class="form-control" type="text" id="tagname" name="tagname" placeholder="add new tag">
           
           
 
@@ -132,6 +132,13 @@
 
     </div>
 </form>
+
+
+
+  <div id="taglist">
+  <!-- load tags here -->
+  </div>
+
   </div>
 
 
