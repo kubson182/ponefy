@@ -263,7 +263,39 @@ function filterOff() {
 
 $(document).ready(function () {
 
-    load();
+
+    function transform(id, mark, date, content, tags) {
+        this.id = id;
+        this.mark = mark;
+        this.date = date;
+        this.content = content;
+        this.tags = tags;
+      }
+
+    var comments = JSON.parse(localStorage.getItem("comments"));
+    // localStorage.getItem("transformed");
+
+    if(comments === null){
+        load();
+        console.log("ziadne predchadzajuce commenty, niet co transformovat");
+        // localStorage.setItem("transformed", true);
+    }
+    else if(comments[0][0] === undefined){
+        load();
+        console.log("pvy koment uz je objekt, niet uz co transformovat");
+        // localStorage.setItem("transformed", true);
+    }else{
+        for(i=1;i<comments.length;i++){
+            var transformed = new transform(i,comments[i][0], comments[i][1], comments[i][2], null);
+            comments.splice(i,1,transformed);
+            
+        }
+        comments.splice(0,1);
+        localStorage.setItem("comments", JSON.stringify(comments));
+        alert("databaza bola updatnuta");
+        load();
+
+    }
 
     $(".selection").click(function () {
         var content = $("#content").val();
