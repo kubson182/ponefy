@@ -5,11 +5,11 @@
   <title>Ponefy</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.mobile-1.5.0-alpha.1.min.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/main.js" id="mainjs"></script>
@@ -46,7 +46,7 @@
               <li><span class="icon flaticon-home">Home</span></li>
             </a>
 
-            <a id="menu-filters" class="notclose">
+            <!-- <a id="menu-filters" class="notclose">
               <li class="notclose"><span class="icon flaticon-filter-tool-black-shape notclose">Filters</span><span
                   class="flaticon-right-arrow notclose"></span></li>
             </a>
@@ -63,8 +63,8 @@
               <a onclick="filterF();">
                 <li><span class="icon flaticon-question-mark">FYIs</span></li>
               </a>
-            </ul>
-            <a id="menu-statistics" onclick="location.href='statistics.html';">
+            </ul> -->
+            <a onclick="location.href='statistics.html';">
               <li><span class="icon flaticon-line-chart">Statistics</span></li>
             </a>
           </ul>
@@ -108,9 +108,22 @@
             <div onclick="cancel();" class="disabled formBtn" id="cancelforma">
               <span>Cancel</span>
             </div>
-            <div id="error"></div>
+
+            <!-- <div class="disabled formBtn" data-toggle="modal" data-target="#tagsmodal" id="tagsforma">
+              <span>Custom tags</span>
+            </div> -->
+            
           </form>
         </div>
+
+        <div id="filters">
+          <span>Filters:</span>
+
+          <span class="filter" id="markfilter" data-toggle="modal" data-target="#markfiltermodal"><span class="filtermarkthumb filterp">P</span>/<span class="filtermarkthumb filtern">N</span>/<span class="filtermarkthumb filterf">F</span></span>
+
+
+        </div>
+
         <div id="komenty">
         </div>
       </div>
@@ -118,12 +131,85 @@
   </div>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+
+<!-- PNF filter modal -->
+  <div class="modal" id="markfiltermodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">PNF Filter</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container">
+            
+          
+          <div class="row">
+            <div class="col-3 filteroptions" onclick="filterP(this);">
+              <div  class="filteroption filterp">Positives</div>
+            </div>
+            <div class="col-3 filteroptions" onclick="filterN(this);">
+                <div  class="filteroption filtern">Negatives</div>
+              </div>
+              <div class="col-3 filteroptions" onclick="filterF(this);">
+                  <div  class="filteroption filterf">FYIs</div>
+                </div>
+                <div class="col-3 filteroptions active" onclick="filterOff(this);">
+                    <div class="filteroption">ALL</div>
+                  </div>
+          </div>
+        </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div> 
+
+
+<!-- The Modal -->
+<div class="modal" id="tagsmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Custom Tags</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row" id="taglistcomment">
+
+        </div>
+       
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="rn">
+
+</div>
+
+
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
 </body>
 

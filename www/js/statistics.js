@@ -1,16 +1,18 @@
 $(document).ready(function () {
     var comments = JSON.parse(localStorage.getItem("comments"));
-    var pocet = comments.length - 1;
+    var pocet = comments.length;
 
     //get date of the first comment for datepicker
-    var firstdate = comments[1][1];
+    var firstdate = comments[0].date;
+    console.log(firstdate);
     firstdate = new Date(firstdate);
     var firstday = firstdate.getDate();
     var firstmonth = firstdate.getMonth() + 1;
     var firstyear = firstdate.getFullYear();
     var first = (firstmonth < 10 ? '0' : '') + firstmonth + "/" + (firstday < 10 ? '0' : '') + firstday + "/" + firstyear;
+    
     //get date of the last comment for datepicker
-    var lastdate = comments[comments.length - 1][1];
+    var lastdate = comments[comments.length-1].date;
     lastdate = new Date(lastdate);
     var lastday = lastdate.getDate();
     var lastmonth = lastdate.getMonth() + 1;
@@ -19,7 +21,7 @@ $(document).ready(function () {
 
     $("#daterange").attr("value", first + " - " + last); //set the range of whole comments for datepicker
 
-    var i = 1;
+    var i = 0;
     var p = 0;
     var n = 0;
     var f = 0;
@@ -27,11 +29,11 @@ $(document).ready(function () {
 
 
     while (i < comments.length) {
-        if (comments[i][0] == "p") {
+        if (comments[i].mark == "p") {
             p++;
             i++;
             // console.log("pridany pozitiv");
-        } else if (comments[i][0] == "n") {
+        } else if (comments[i].mark == "n") {
             n++;
             i++;
             // console.log("pridany negativ");
@@ -62,13 +64,13 @@ $(document).ready(function () {
         }, function (start, end, label) {
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
             console.log(start._d);
-            var i = 1;
+            var i = 0;
             var pocet = 0;
             var p = 0;
             var n = 0;
             var f = 0;
             while (i < comments.length) {
-                var ddd = comments[i][1];
+                var ddd = comments[i].date;
                 // console.log(ddd);
                 // var komdate = ddd.substring(0,10);
                 ddd = new Date(ddd);
@@ -77,10 +79,10 @@ $(document).ready(function () {
                     // console.log(start._d);
                     // console.log(ddd);
 
-                    if (comments[i][0] == "p") {
+                    if (comments[i].mark == "p") {
                         p++;
                         pocet++;
-                    } else if (comments[i][0] == "n") {
+                    } else if (comments[i].mark == "n") {
                         n++;
                         pocet++;
                     } else {

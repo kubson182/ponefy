@@ -1,5 +1,8 @@
 body {
-  background-color: bisque;
+  color: white !important;
+}
+
+span {
   color: white;
 }
 
@@ -18,6 +21,11 @@ nav {
   width: 100%;
   z-index: 2;
 }
+
+hr {
+  border-top: 1px solid rgb(167, 167, 167);
+}
+
 
 .ccontainer-fluid.menubar {
   z-index: 900;
@@ -170,6 +178,7 @@ label {
 .formBtn {
   border: 2px white solid;
   margin-top: 10px;
+  background-color: transparent;
   width: 49%;
   height: 50px;
   border-radius: 10px;
@@ -203,15 +212,44 @@ label {
   /* width: 33%; */
   height: 50px;
   text-align: center;
-  border: 1px white solid;
+  border: 1px rgb(104, 104, 104) solid;
   padding-top: 13px;
   margin-top: 10px;
   color: white;
+  /* font-weight: bold; */
 }
 
 .active {
-  background-color: rgba(255, 255, 1, 0.836);
-  color: black;
+  font-weight: bold;
+}
+
+#p {
+  
+  background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(0, 255, 0, 0.247));
+}
+
+#p.active {
+  background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(0, 255, 0, 0.562));
+  border: 1px solid green;
+}
+
+#n {
+  background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(255, 0, 0, 0.247));
+}
+
+#n.active {
+  background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(255, 0, 0, 0.562));
+  border: 1px solid red;
+}
+
+#f {
+  background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(0, 0, 255, 0.247));
+  
+}
+
+#f.active {
+  background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(0, 0, 255, 0.562));
+   border: 1px solid blue;
 }
 
 .submenu-items {
@@ -371,6 +409,7 @@ label {
   top: 30px;
   padding: 15px 10px 10px 10px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .editbtn {
@@ -385,6 +424,7 @@ label {
   padding: 15px 25px 10px 25px;
   float: right;
   cursor: pointer;
+  font-weight: bold;
 
 }
 
@@ -401,6 +441,7 @@ label {
   padding: 15px 10px 10px 10px;
   float: right;
   cursor: pointer;
+  font-weight: bold;
 
 
 }
@@ -417,6 +458,7 @@ label {
   color: rgb(0, 0, 0);
   padding: 15px 25px 10px 25px;
   cursor: pointer;
+  font-weight: bold;
 
 }
 
@@ -510,4 +552,104 @@ html body .ui-group-theme-a a {
 .on {
   left: 31px;
   transition: left 0.4s;
+}
+
+#colorSelector {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#taglist .row {
+  margin-top: 10px;
+}
+
+.newtagbtn {
+  border: 1px solid white;
+  border-radius: 5px;
+  /* background-color: rgba(162, 255, 86, 0.918); */
+  color: white;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.updatetagbtn {
+  border: 1px solid white;
+  border-radius: 5px;
+  /* background-color: rgba(162, 255, 86, 0.918); */
+  color: white;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.tag-settings{
+  min-height: 35px;
+  border-radius: 5px;
+  border: 1px solid white;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* color: black; */
+  text-shadow: none;
+  
+}
+
+.light {
+  color: black;
+}
+
+.dark {
+  color: white;
+}
+
+/* modal */
+.modal-content {
+  background: black;
+  color: white;
+}
+
+
+#filters {
+  margin-bottom: 10px;
+
+}
+
+.filter {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 0 5px;
+}
+
+.filteroptions{
+  text-align: center;
+}
+
+.filteroption {
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 2px 5px;
+  width: 100%;
+}
+
+.filteroption.active{
+  font-weight: bold;
+}
+
+.filterp.active {
+  color:green;
+}
+
+.filtern.active {
+  color:red;
+}
+
+.filterf.active {
+  color:blue;
 }

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.codesundar.ponefy" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>ponefy</name>
+<widget id="com.codesundar.ponefy-dev" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>ponefy-dev</name>
     <description>
-       App to track positive, negative and FYI events.
+       dev version App to track positive, negative and FYI events.
     </description>
     <author email="j.krchlik@gmail.com" href="http://phonegap.com">
         Jakub Krchlík
