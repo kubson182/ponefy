@@ -357,8 +357,9 @@ function releaseNotes() {
         <ul>
           <li>As you can see, the release notes are displaying when the app is updated (also available to open from settings)</li>
           <li>If you get popup with message "database updated", it means that the structure of how your data are stored has changed from arrays of arrays to arrays of objects. Nothing you have to worry about. It will just make my next updates easier to code ;)</li>
-          <li>Small design changes</li>
+          <li>Filters were moved from menu to main page, so the menu is consistent on all pages</li>
           <li>You can now use the app offline</li>
+          <li>Small design improvements</li>
           
         </ul>
     
