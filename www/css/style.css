@@ -371,6 +371,7 @@ a:visited {
   top: 30px;
   padding: 15px 10px 10px 10px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .editbtn {
@@ -385,6 +386,7 @@ a:visited {
   padding: 15px 25px 10px 25px;
   float: right;
   cursor: pointer;
+  font-weight: bold;
 
 }
 
@@ -401,6 +403,7 @@ a:visited {
   padding: 15px 10px 10px 10px;
   float: right;
   cursor: pointer;
+  font-weight: bold;
 
 
 }
@@ -417,6 +420,7 @@ a:visited {
   color: rgb(0, 0, 0);
   padding: 15px 25px 10px 25px;
   cursor: pointer;
+  font-weight: bold;
 
 }
 
@@ -559,4 +563,46 @@ html body .ui-group-theme-a a {
 
 .dark {
   color: white;
+}
+
+
+
+#filters {
+  margin-bottom: 10px;
+
+}
+
+.filter {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 0 5px;
+}
+
+.filteroptions{
+  text-align: center;
+}
+
+.filteroption {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 5px;
+  width: 100%;
+}
+
+.filteroption.active{
+  font-weight: bold;
+}
+
+.filterp.active {
+  color:green;
+}
+
+.filtern.active {
+  color:red;
+}
+
+.filterf.active {
+  color:blue;
 }

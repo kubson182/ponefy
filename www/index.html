@@ -46,7 +46,7 @@
               <li><span class="icon flaticon-home">Home</span></li>
             </a>
 
-            <a id="menu-filters" class="notclose">
+            <!-- <a id="menu-filters" class="notclose">
               <li class="notclose"><span class="icon flaticon-filter-tool-black-shape notclose">Filters</span><span
                   class="flaticon-right-arrow notclose"></span></li>
             </a>
@@ -63,8 +63,8 @@
               <a onclick="filterF();">
                 <li><span class="icon flaticon-question-mark">FYIs</span></li>
               </a>
-            </ul>
-            <a id="menu-statistics" onclick="location.href='statistics.html';">
+            </ul> -->
+            <a onclick="location.href='statistics.html';">
               <li><span class="icon flaticon-line-chart">Statistics</span></li>
             </a>
           </ul>
@@ -115,12 +115,64 @@
             
           </form>
         </div>
+
+        <div id="filters">
+          <span>Filters:</span>
+
+          <span class="filter" id="markfilter" data-toggle="modal" data-target="#markfiltermodal"><span class="filtermarkthumb filterp">P</span>/<span class="filtermarkthumb filtern">N</span>/<span class="filtermarkthumb filterf">F</span></span>
+
+
+        </div>
+
         <div id="komenty">
         </div>
       </div>
     </div>
   </div>
 
+
+
+<!-- PNF filter modal -->
+  <div class="modal" id="markfiltermodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">PNF Filter</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container">
+            
+          
+          <div class="row">
+            <div class="col-3 filteroptions" onclick="filterP(this);">
+              <div  class="filteroption filterp">Positives</div>
+            </div>
+            <div class="col-3 filteroptions" onclick="filterN(this);">
+                <div  class="filteroption filtern">Negatives</div>
+              </div>
+              <div class="col-3 filteroptions" onclick="filterF(this);">
+                  <div  class="filteroption filterf">FYIs</div>
+                </div>
+                <div class="col-3 filteroptions active" onclick="filterOff(this);">
+                    <div class="filteroption">ALL</div>
+                  </div>
+          </div>
+        </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div> 
 
 
 <!-- The Modal -->

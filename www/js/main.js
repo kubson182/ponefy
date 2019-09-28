@@ -73,9 +73,9 @@ function post(){
         
         if(invertsetting == 0){
           
-        $("#komenty").prepend("<div id='"+ comments[i].id + "' class='removebtn " + comments[i].id + "' onclick='remove()'><span><strong>Remove</strong></span></div><div id='"+ comments[i].id + "' class='editbtn " + comments[i].id + "' onclick='edit(this)'><span><strong>Edit</strong></span></div><div id='" + comments[i].id + "' class='comment " + comments[i].id + " "+ comments[i].mark +"'><span class='comment-date'>" + DateOutput + "</span><div id='commenttags'></div><span class='comment-content'>" + comments[i].content + "</span></div>");
+        $("#komenty").prepend("<div id='"+ comments[i].id + "' class='removebtn " + comments[i].id + "' onclick='remove(this)'>Remove</div><div id='"+ comments[i].id + "' class='editbtn " + comments[i].id + "' onclick='edit(this)'>Edit</div><div id='" + comments[i].id + "' class='comment " + comments[i].id + " "+ comments[i].mark +"'><span class='comment-date'>" + DateOutput + "</span><div id='commenttags'></div><span class='comment-content'>" + comments[i].content + "</span></div>");
         }else{
-            $("#komenty").prepend("<div id='"+ comments[i].id + "' class='removebtn2 " + comments[i].id + "' onclick='remove()'><span><strong>Remove</strong></span></div><div id='"+ comments[i].id + "' class='editbtn2 " + comments[i].id + "' onclick='edit(this)'><span><strong>Edit</strong></span></div><div id='" + comments[i].id + "' class='comment " + comments[i].id + " "+ comments[i].mark +"'><span class='comment-date'>" + DateOutput + "</span><div id='commenttags'></div><span class='comment-content'>" + comments[i].content + "</span></div>");   
+            $("#komenty").prepend("<div id='"+ comments[i].id + "' class='removebtn2 " + comments[i].id + "' onclick='remove(this)'><span><strong>Remove</strong></span></div><div id='"+ comments[i].id + "' class='editbtn2 " + comments[i].id + "' onclick='edit(this)'>Edit</div><div id='" + comments[i].id + "' class='comment " + comments[i].id + " "+ comments[i].mark +"'><span class='comment-date'>" + DateOutput + "</span><div id='commenttags'></div><span class='comment-content'>" + comments[i].content + "</span></div>");   
         }
             
             i++;
@@ -169,48 +169,6 @@ function post(){
         });
     }
     }
-
-    // $(".editbtn").click(function () {
-    //     $(".editing").removeClass("editing");
-    //     var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
-    //     var id = $(this).attr("id");
-    //     var index = 0;
-    //     for(i=0; i<comments.length; i++){
-    //         if(comments[i].id == id){
-    //             var comment = comments[i]; //najdi kde v poli sa nachadza prislusny comment
-    //         }
-    //     }
-    
-    //     var mark = comment.mark; // aka je znacka commentu
-    //     var content = comment.content; // obsah commentu
-
-    //     $("#content").val(content);
-    //     $(".active").removeClass("active");
-    //     $("#" + mark).addClass("active");
-    //     $("#mark").attr("value", mark);
-    //     $("#forma").addClass("disabled");
-    //     $("#updateforma").removeClass("disabled");
-    //     $("#cancelforma").removeClass("disabled");
-    //     $("#tagsforma").removeClass("disabled");
-    //     var i = comments.length - 1;
-    //     // console.log(id);
-    //     while (i > 0) {
-    //         if (i != id) {
-    //             $("#" + i).removeClass("toedit");
-    //             // console.log("nastava zmena ked i="+i)
-    //         }
-    //         // console.log(comments[i]);
-    //         i--;
-    //     }
-        
-    //     $("#" + id + ".comment").addClass("editing");
-    //     window.scrollTo(0, 0);
-
-    // }); // end of click on editbtn
-
-    
-
-
 } //end of load()
 
 
@@ -256,9 +214,11 @@ function edit(x) {
 }
 
 
-function remove() {
+function remove(x) {
+    var x = x;
+
     var comments = JSON.parse(localStorage.getItem("comments")); //do comments  priradi komenty z localstorage, vytvori pole
-        var id = $(this).attr("id");
+        var id = $(x).attr("id");
 
         for(i=0; i<comments.length; i++){
             if(comments[i].id == id){
@@ -330,25 +290,48 @@ function cancel() {
 
 } //end of cancel
 
-function filterP() {
+function filterP(x) {
+    var x = x;
+    $(".filteroptions.active").removeClass("active");
+    $(".filteroption.active").removeClass("active");
+    $(".filtermarkthumb.active").removeClass("active");
+    $(".filterp").addClass("active");
+    $(x).addClass("active");
     $(".n").fadeOut(600);
     $(".f").fadeOut(600);
     $(".p").fadeIn(900);
 }
 
-function filterN() {
+function filterN(x) {
+    var x = x;
+    $(".filteroptions.active").removeClass("active");
+    $(".filteroption.active").removeClass("active");
+    $(".filtermarkthumb.active").removeClass("active");
+    $(".filtern").addClass("active");
+    $(x).addClass("active");
     $(".p").fadeOut(600);
     $(".f").fadeOut(600);
     $(".n").fadeIn(900);
 }
 
-function filterF() {
+function filterF(x) {
+    var x = x;
+    $(".filteroptions.active").removeClass("active");
+    $(".filteroption.active").removeClass("active");
+    $(".filtermarkthumb.active").removeClass("active");
+    $(".filterf").addClass("active");
+    $(x).addClass("active");
     $(".p").fadeOut(600);
     $(".n").fadeOut(600);
     $(".f").fadeIn(900);
 }
 
-function filterOff() {
+function filterOff(x) {
+    var x = x;
+    $(".filteroptions.active").removeClass("active");
+    $(".filteroption.active").removeClass("active");
+    $(".filtermarkthumb.active").removeClass("active");
+    $(x).addClass("active");
     $(".p").fadeIn(600);
     $(".n").fadeIn(600);
     $(".f").fadeIn(900);
