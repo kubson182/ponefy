@@ -337,8 +337,36 @@ function filterOff(x) {
     $(".f").fadeIn(900);
 }
 
+function cleardatamodal() {
+    var div = document.createElement('div');
+    div.innerHTML = `<div class="modal" tabindex="-1" role="dialog" id="cleardatasmodal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Are you sure?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" > 
+        <center>This will delete all your data in the app. Do you wish to continue?</center>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" onclick="localStorage.clear()" data-dismiss="modal">Yes</button>
+    
+        </div>
+      
+      </div>
+    </div>
+  </div>`;
+    
+    
 
-var currentversion = "1.0.20190928";
+    $("#clear").append(div);
+    $('#cleardatasmodal').modal('show');
+}
+
+
+var currentversion = "1.0.20200221";
 
 function releaseNotes() {
     var div = document.createElement('div');
@@ -355,11 +383,7 @@ function releaseNotes() {
         <p>Hello there! </p>
         <p>What's new in this version ${currentversion} :</p>
         <ul>
-          <li>As you can see, the release notes are displaying when the app is updated (also available to open from settings)</li>
-          <li>If you get popup with message "database updated", it means that the structure of how your data are stored has changed from arrays of arrays to arrays of objects. Nothing you have to worry about. It will just make my next updates easier to code ;)</li>
-          <li>Filters were moved from menu to main page, so the menu is consistent on all pages</li>
-          <li>You can now use the app offline</li>
-          <li>Small design improvements</li>
+          <li>Now you are able to clear all data in the app (check settings)</li>
           
         </ul>
     
@@ -376,6 +400,7 @@ function releaseNotes() {
     $("#rn").append(div);
     $('#releasenotesmodal').modal('show');
 }
+
 
 
 $(document).ready(function () {
